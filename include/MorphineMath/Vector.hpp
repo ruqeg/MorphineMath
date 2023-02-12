@@ -1,7 +1,7 @@
 #ifndef MORPHINE_MATH_VECTOR_HPP
 #define MORPHINE_MATH_VECTOR_HPP
 
-#include "Types.hpp"
+#include "Scalar.hpp"
 
 namespace MorphineMath
 {
