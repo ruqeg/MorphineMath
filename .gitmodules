@@ -1,0 +1,3 @@
+[submodule "extlibs/doctest"]
+	path = extlibs/doctest
+	url = https://github.com/doctest/doctest.git
