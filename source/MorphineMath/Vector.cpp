@@ -4,14 +4,12 @@ namespace MorphineMath
 {
 	VECTORF32::operator VECTOR() const noexcept
 	{
-		VECTOR vResult = { { { f[0], f[1], f[2], f[3] } } };
-		return vResult;
+		return v;
 	}
 
 	VECTORU32::operator VECTOR() const noexcept
 	{
-		VECTOR vResult = { { { u[0], u[1], u[2], u[3] } } };
-		return vResult;
+		return v;
 	}
 
 	VECTOR VectorZero
