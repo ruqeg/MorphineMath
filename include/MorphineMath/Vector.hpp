@@ -79,7 +79,7 @@ namespace MorphineMath
 		F32		VectorGetY(CVECTOR v) noexcept;
 		F32		VectorGetZ(CVECTOR v) noexcept;
 		F32		VectorGetW(CVECTOR v) noexcept;
-
+				
 		U32		VectorGetIntX(CVECTOR v) noexcept;
 		U32		VectorGetIntY(CVECTOR v) noexcept;
 		U32		VectorGetIntZ(CVECTOR v) noexcept;

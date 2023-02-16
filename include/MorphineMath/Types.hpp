@@ -14,8 +14,8 @@ namespace MorphineMath
 	using U32	= unsigned __int32;
 	using U64	= unsigned __int64;
 
-	using F32x4 = F32[4];
-	using U32x4 = U32[4];
+	using F32x4	= F32[4];
+	using U32x4	= U32[4];
 }
 
 #endif
