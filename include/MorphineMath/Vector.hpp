@@ -75,15 +75,15 @@ namespace MorphineMath
 		VECTOR	VectorSplatQNaN() noexcept;
 		VECTOR	VectorSplatEpsilon() noexcept;
 
-		F32		VectorGetX(CVECTOR v) noexcept;
-		F32		VectorGetY(CVECTOR v) noexcept;
-		F32		VectorGetZ(CVECTOR v) noexcept;
-		F32		VectorGetW(CVECTOR v) noexcept;
-				
-		U32		VectorGetIntX(CVECTOR v) noexcept;
-		U32		VectorGetIntY(CVECTOR v) noexcept;
-		U32		VectorGetIntZ(CVECTOR v) noexcept;
-		U32		VectorGetIntW(CVECTOR v) noexcept;
+		F32	VectorGetX(CVECTOR v) noexcept;
+		F32	VectorGetY(CVECTOR v) noexcept;
+		F32	VectorGetZ(CVECTOR v) noexcept;
+		F32	VectorGetW(CVECTOR v) noexcept;
+		
+		U32	VectorGetIntX(CVECTOR v) noexcept;
+		U32	VectorGetIntY(CVECTOR v) noexcept;
+		U32	VectorGetIntZ(CVECTOR v) noexcept;
+		U32	VectorGetIntW(CVECTOR v) noexcept;
 
 		VECTOR	VectorSetX(CVECTOR V, F32 x) noexcept;
 		VECTOR	VectorSetY(CVECTOR V, F32 y) noexcept;
