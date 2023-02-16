@@ -582,7 +582,7 @@ VECTOR VectorIsInfinite
 	return vResult.v;
 }
 
-VECTOR	
+VECTOR
 VectorMin
 (
 	CVECTOR v1,
@@ -614,7 +614,7 @@ VectorMax
 	return Result.v;
 }
 
-VECTOR	
+VECTOR
 VectorRound
 (
 	CVECTOR v
@@ -629,7 +629,7 @@ VectorRound
 	return Result.v;
 }
 
-VECTOR	
+VECTOR
 VectorFloor
 (
 	CVECTOR v
@@ -644,7 +644,7 @@ VectorFloor
 	return Result.v;
 }
 
-VECTOR	
+VECTOR
 VectorCeil
 (
 	CVECTOR v
@@ -659,7 +659,7 @@ VectorCeil
 	return Result.v;
 }
 
-VECTOR	
+VECTOR
 VectorTrunc
 (
 	CVECTOR v
@@ -688,6 +688,70 @@ VectorClamp
 		ScalarClamp(v.vector4_f32[1], vmin.vector4_f32[1], vmax.vector4_f32[1]),
 		ScalarClamp(v.vector4_f32[2], vmin.vector4_f32[2], vmax.vector4_f32[2]),
 		ScalarClamp(v.vector4_f32[3], vmin.vector4_f32[3], vmax.vector4_f32[3])
+	} } };
+	return Result.v;
+}
+
+VECTOR
+VectorAndInt
+(
+	CVECTOR v1,
+	CVECTOR v2
+) noexcept
+{
+	VECTORU32 Result = { { {
+		v1.vector4_u32[0] & v2.vector4_u32[0],
+		v1.vector4_u32[1] & v2.vector4_u32[1],
+		v1.vector4_u32[2] & v2.vector4_u32[2],
+		v1.vector4_u32[3] & v2.vector4_u32[3]
+	} } };
+	return Result.v;
+}
+
+VECTOR	
+VectorOrInt
+(
+	CVECTOR v1,
+	CVECTOR v2
+) noexcept
+{
+	VECTORU32 Result = { { {
+		v1.vector4_u32[0] | v2.vector4_u32[0],
+		v1.vector4_u32[1] | v2.vector4_u32[1],
+		v1.vector4_u32[2] | v2.vector4_u32[2],
+		v1.vector4_u32[3] | v2.vector4_u32[3]
+	} } };
+	return Result.v;
+}
+
+VECTOR
+VectorNorInt
+(
+	CVECTOR v1,
+	CVECTOR v2
+) noexcept
+{
+	VECTORU32 Result = { { {
+		~(v1.vector4_u32[0] | v2.vector4_u32[0]),
+		~(v1.vector4_u32[1] | v2.vector4_u32[1]),
+		~(v1.vector4_u32[2] | v2.vector4_u32[2]),
+		~(v1.vector4_u32[3] | v2.vector4_u32[3])
+	} } };
+	return Result.v;
+}
+
+VECTOR
+VectorXorInt
+(
+	CVECTOR v1,
+	CVECTOR v2
+) noexcept
+{
+	VECTORU32 Result = { { {
+		v1.vector4_u32[0] ^ v2.vector4_u32[0],
+		v1.vector4_u32[1] ^ v2.vector4_u32[1],
+		v1.vector4_u32[2] ^ v2.vector4_u32[2],
+		v1.vector4_u32[3] ^ v2.vector4_u32[3]
 	} } };
 	return Result.v;
 }

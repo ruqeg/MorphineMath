@@ -4,6 +4,7 @@
 
 #include "../include/MorphineMath/MorphineMath.hpp"
 
+#include <algorithm>
 #include <stdlib.h>
 #include <time.h>
 
@@ -85,6 +86,58 @@ MorphineMath::VECTOR randomVectorInt(int a, int b)
     CHECK(V.vector4_u32[3] == s);\
 }
 
+
+TEST_CASE("MorphineMath::Scalar")
+{
+    constexpr int min = -10000;
+    constexpr int max = 10000;
+    constexpr size_t count = 5;
+
+    srand(time(NULL));
+
+    SUBCASE("MorphineMath::ScalarRound")
+    {
+        for (size_t i = 0; i < count; ++i)
+        {
+            const MorphineMath::F32 s = randomFloat(min, max);
+            CHECK(MorphineMath::ScalarRound(s) == std::roundf(s));
+        }
+    }
+    SUBCASE("MorphineMath::ScalarFloor")
+    {
+        for (size_t i = 0; i < count; ++i)
+        {
+            const MorphineMath::F32 s = randomFloat(min, max);
+            CHECK(MorphineMath::ScalarFloor(s) == std::floorf(s));
+        }
+    }
+    SUBCASE("MorphineMath::ScalarCeil")
+    {
+        for (size_t i = 0; i < count; ++i)
+        {
+            const MorphineMath::F32 s = randomFloat(min, max);
+            CHECK(MorphineMath::ScalarCeil(s) == std::ceilf(s));
+        }
+    }
+    SUBCASE("MorphineMath::ScalarTrunc")
+    {
+        for (size_t i = 0; i < count; ++i)
+        {
+            const MorphineMath::F32 s = randomFloat(min, max);
+            CHECK(MorphineMath::ScalarTrunc(s) == std::truncf(s));
+        }
+    }
+    SUBCASE("MorphineMath::ScalarClamp")
+    {
+        for (size_t i = 0; i < count; ++i)
+        {
+            const MorphineMath::F32 minS = randomFloat(min, max);
+            const MorphineMath::F32 maxS = randomFloat(minS, max);
+            const MorphineMath::F32 s = randomFloat(min, max);
+            CHECK(MorphineMath::ScalarClamp(s, minS, maxS) == std::clamp(s, minS, maxS));
+        }
+    }
+}
 TEST_CASE("MorphineMath::Vector")
 {
     constexpr int min = -10000;
@@ -258,5 +311,37 @@ TEST_CASE("MorphineMath::Vector")
     {
         CHECK_VECTOR_EQUAL_VECTOR_INT(MorphineMath::VectorIsNaN(MorphineMath::VectorSplatQNaN()), MorphineMath::VectorTrueInt());
         CHECK_VECTOR_EQUAL_VECTOR_INT(MorphineMath::VectorIsInfinite(MorphineMath::VectorSplatInfinity()), MorphineMath::VectorTrueInt());
+    }
+    SUBCASE("MorphineMath::VectorBitOperations")
+    {
+        for (size_t i = 0; i < count; ++i)
+        {
+            const MorphineMath::VECTOR vRandom1 = randomVector(min, max);
+            const MorphineMath::VECTOR vRandom2 = randomVector(min, max);
+            CHECK_VECTOR_EQUAL_VECTOR(MorphineMath::VectorAndInt(vRandom1, vRandom2), MorphineMath::VectorSetInt(
+                vRandom1.vector4_u32[0] & vRandom2.vector4_u32[0],
+                vRandom1.vector4_u32[1] & vRandom2.vector4_u32[1],
+                vRandom1.vector4_u32[2] & vRandom2.vector4_u32[2],
+                vRandom1.vector4_u32[3] & vRandom2.vector4_u32[3]
+            ));
+            CHECK_VECTOR_EQUAL_VECTOR(MorphineMath::VectorOrInt(vRandom1, vRandom2), MorphineMath::VectorSetInt(
+                vRandom1.vector4_u32[0] | vRandom2.vector4_u32[0],
+                vRandom1.vector4_u32[1] | vRandom2.vector4_u32[1],
+                vRandom1.vector4_u32[2] | vRandom2.vector4_u32[2],
+                vRandom1.vector4_u32[3] | vRandom2.vector4_u32[3]
+            ));
+            CHECK_VECTOR_EQUAL_VECTOR(MorphineMath::VectorNorInt(vRandom1, vRandom2), MorphineMath::VectorSetInt(
+                ~(vRandom1.vector4_u32[0] | vRandom2.vector4_u32[0]),
+                ~(vRandom1.vector4_u32[1] | vRandom2.vector4_u32[1]),
+                ~(vRandom1.vector4_u32[2] | vRandom2.vector4_u32[2]),
+                ~(vRandom1.vector4_u32[3] | vRandom2.vector4_u32[3])
+            ));
+            CHECK_VECTOR_EQUAL_VECTOR(MorphineMath::VectorXorInt(vRandom1, vRandom2), MorphineMath::VectorSetInt(
+                vRandom1.vector4_u32[0] ^ vRandom2.vector4_u32[0],
+                vRandom1.vector4_u32[1] ^ vRandom2.vector4_u32[1],
+                vRandom1.vector4_u32[2] ^ vRandom2.vector4_u32[2],
+                vRandom1.vector4_u32[3] ^ vRandom2.vector4_u32[3]
+            ));
+        }
     }
 }
