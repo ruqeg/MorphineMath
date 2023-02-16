@@ -756,4 +756,344 @@ VectorXorInt
 	return Result.v;
 }
 
+VECTOR
+VectorNegate
+(
+	CVECTOR v
+) noexcept
+{
+	VECTORF32 Result = { { {
+		-v.vector4_f32[0],
+		-v.vector4_f32[1],
+		-v.vector4_f32[2],
+		-v.vector4_f32[3]
+	} } };
+	return Result.v;
+}
+
+VECTOR
+VectorAdd
+(
+	CVECTOR v1,
+	CVECTOR v2
+) noexcept
+{
+	VECTORF32 Result = { { {
+		v1.vector4_f32[0] + v2.vector4_f32[0],
+		v1.vector4_f32[1] + v2.vector4_f32[1],
+		v1.vector4_f32[2] + v2.vector4_f32[2],
+		v1.vector4_f32[3] + v2.vector4_f32[3]
+	} } };
+	return Result.v;
+}
+
+VECTOR
+VectorSubtract
+(
+	CVECTOR v1,
+	CVECTOR v2
+) noexcept
+{
+	VECTORF32 Result = { { {
+		v1.vector4_f32[0] - v2.vector4_f32[0],
+		v1.vector4_f32[1] - v2.vector4_f32[1],
+		v1.vector4_f32[2] - v2.vector4_f32[2],
+		v1.vector4_f32[3] - v2.vector4_f32[3]
+	} } };
+	return Result.v;
+}
+
+VECTOR
+VectorMultiply
+(
+	CVECTOR v1,
+	CVECTOR v2
+) noexcept
+{
+	VECTORF32 Result = { { {
+		v1.vector4_f32[0] * v2.vector4_f32[0],
+		v1.vector4_f32[1] * v2.vector4_f32[1],
+		v1.vector4_f32[2] * v2.vector4_f32[2],
+		v1.vector4_f32[3] * v2.vector4_f32[3]
+	} } };
+	return Result.v;
+}
+
+VECTOR
+VectorMultiplyAdd
+(
+	CVECTOR v1,
+	CVECTOR v2,
+	CVECTOR v3
+) noexcept
+{
+	VECTORF32 Result = { { {
+		v1.vector4_f32[0] * v2.vector4_f32[0] + v3.vector4_f32[0],
+		v1.vector4_f32[1] * v2.vector4_f32[1] + v3.vector4_f32[1],
+		v1.vector4_f32[2] * v2.vector4_f32[2] + v3.vector4_f32[2],
+		v1.vector4_f32[3] * v2.vector4_f32[3] + v3.vector4_f32[3]
+	} } };
+	return Result.v;
+}
+
+VECTOR
+VectorDivide
+(
+	CVECTOR v1,
+	CVECTOR v2
+) noexcept
+{
+	VECTORF32 Result = { { {
+		v1.vector4_f32[0] / v2.vector4_f32[0],
+		v1.vector4_f32[1] / v2.vector4_f32[1],
+		v1.vector4_f32[2] / v2.vector4_f32[2],
+		v1.vector4_f32[3] / v2.vector4_f32[3]
+	} } };
+	return Result.v;
+}
+
+VECTOR
+VectorDivideAdd
+(
+	CVECTOR v1,
+	CVECTOR v2,
+	CVECTOR v3
+) noexcept
+{
+	VECTORF32 Result = { { {
+		v1.vector4_f32[0] / v2.vector4_f32[0] + v3.vector4_f32[0],
+		v1.vector4_f32[1] / v2.vector4_f32[1] + v3.vector4_f32[1],
+		v1.vector4_f32[2] / v2.vector4_f32[2] + v3.vector4_f32[2],
+		v1.vector4_f32[3] / v2.vector4_f32[3] + v3.vector4_f32[3]
+	} } };
+	return Result.v;
+}
+
+VECTOR
+VectorScale
+(
+	CVECTOR v,
+	F32 s
+) noexcept
+{
+	VECTORF32 Result = { { {
+		v.vector4_f32[0] * s,
+		v.vector4_f32[1] * s,
+		v.vector4_f32[2] * s,
+		v.vector4_f32[3] * s
+	} } };
+	return Result.v;
+}
+
+VECTOR
+VectorSqrt
+(
+	CVECTOR v
+) noexcept
+{
+	VECTORF32 Result = { { {
+		ScalarSqrt(v.vector4_f32[0]),
+		ScalarSqrt(v.vector4_f32[1]),
+		ScalarSqrt(v.vector4_f32[2]),
+		ScalarSqrt(v.vector4_f32[3])
+	} } };
+	return Result.v;
+}
+
+VECTOR
+VectorExp2
+(
+	CVECTOR v
+) noexcept
+{
+	VECTORF32 Result = { { {
+		ScalarExp2(v.vector4_f32[0]),
+		ScalarExp2(v.vector4_f32[1]),
+		ScalarExp2(v.vector4_f32[2]),
+		ScalarExp2(v.vector4_f32[3])
+	} } };
+	return Result.v;
+}
+
+VECTOR
+VectorExp
+(
+	CVECTOR v
+) noexcept
+{
+	VECTORF32 Result = { { {
+		ScalarExp(v.vector4_f32[0]),
+		ScalarExp(v.vector4_f32[1]),
+		ScalarExp(v.vector4_f32[2]),
+		ScalarExp(v.vector4_f32[3])
+	} } };
+	return Result.v;
+}
+
+VECTOR
+VectorLog2
+(
+	CVECTOR v
+) noexcept
+{
+	VECTORF32 Result = { { {
+		ScalarLog2(v.vector4_f32[0]),
+		ScalarLog2(v.vector4_f32[1]),
+		ScalarLog2(v.vector4_f32[2]),
+		ScalarLog2(v.vector4_f32[3])
+	} } };
+	return Result.v;
+}
+
+VECTOR
+VectorLog10
+(
+	CVECTOR v
+) noexcept
+{
+	VECTORF32 Result = { { {
+		ScalarLog10(v.vector4_f32[0]),
+		ScalarLog10(v.vector4_f32[1]),
+		ScalarLog10(v.vector4_f32[2]),
+		ScalarLog10(v.vector4_f32[3])
+	} } };
+	return Result.v;
+}
+
+VECTOR
+VectorLog
+(
+	CVECTOR v
+) noexcept
+{
+	VECTORF32 Result = { { {
+		ScalarLog(v.vector4_f32[0]),
+		ScalarLog(v.vector4_f32[1]),
+		ScalarLog(v.vector4_f32[2]),
+		ScalarLog(v.vector4_f32[3])
+	} } };
+	return Result.v;
+}
+
+VECTOR
+VectorPow
+(
+	CVECTOR v1,
+	CVECTOR v2
+) noexcept
+{
+	VECTORF32 Result = { { {
+		ScalarPow(v1.vector4_f32[0], v2.vector4_f32[0]),
+		ScalarPow(v1.vector4_f32[1], v2.vector4_f32[1]),
+		ScalarPow(v1.vector4_f32[2], v2.vector4_f32[2]),
+		ScalarPow(v1.vector4_f32[3], v2.vector4_f32[3])
+	} } };
+	return Result.v;
+}
+
+VECTOR
+VectorAbs
+(
+	CVECTOR v
+) noexcept
+{
+	VECTORF32 Result = { { {
+		ScalarAbs(v.vector4_f32[0]),
+		ScalarAbs(v.vector4_f32[1]),
+		ScalarAbs(v.vector4_f32[2]),
+		ScalarAbs(v.vector4_f32[3])
+	} } };
+	return Result.v;
+}
+
+VECTOR
+VectorCos
+(
+	CVECTOR v
+) noexcept
+{
+	VECTORF32 Result = { { {
+		ScalarCos(v.vector4_f32[0]),
+		ScalarCos(v.vector4_f32[1]),
+		ScalarCos(v.vector4_f32[2]),
+		ScalarCos(v.vector4_f32[3])
+	} } };
+	return Result.v;
+}
+
+VECTOR
+VectorSin
+(
+	CVECTOR v
+) noexcept
+{
+	VECTORF32 Result = { { {
+		ScalarSin(v.vector4_f32[0]),
+		ScalarSin(v.vector4_f32[1]),
+		ScalarSin(v.vector4_f32[2]),
+		ScalarSin(v.vector4_f32[3])
+	} } };
+	return Result.v;
+}
+
+VECTOR
+VectorTan
+(
+	CVECTOR v
+) noexcept
+{
+	VECTORF32 Result = { { {
+		ScalarTan(v.vector4_f32[0]),
+		ScalarTan(v.vector4_f32[1]),
+		ScalarTan(v.vector4_f32[2]),
+		ScalarTan(v.vector4_f32[3])
+	} } };
+	return Result.v;
+}
+
+VECTOR
+VectorArcCos
+(
+	CVECTOR v
+) noexcept
+{
+	VECTORF32 Result = { { {
+		ScalarArcCos(v.vector4_f32[0]),
+		ScalarArcCos(v.vector4_f32[1]),
+		ScalarArcCos(v.vector4_f32[2]),
+		ScalarArcCos(v.vector4_f32[3])
+	} } };
+	return Result.v;
+}
+
+VECTOR
+VectorArcSin
+(
+	CVECTOR v
+) noexcept
+{
+	VECTORF32 Result = { { {
+		ScalarArcSin(v.vector4_f32[0]),
+		ScalarArcSin(v.vector4_f32[1]),
+		ScalarArcSin(v.vector4_f32[2]),
+		ScalarArcSin(v.vector4_f32[3])
+	} } };
+	return Result.v;
+}
+
+VECTOR
+VectorArcTan
+(
+	CVECTOR v
+) noexcept
+{
+	VECTORF32 Result = { { {
+		ScalarArcTan(v.vector4_f32[0]),
+		ScalarArcTan(v.vector4_f32[1]),
+		ScalarArcTan(v.vector4_f32[2]),
+		ScalarArcTan(v.vector4_f32[3])
+	} } };
+	return Result.v;
+}
+
 }

@@ -1,5 +1,7 @@
 #include "../../include/MorphineMath/Scalar.hpp"
 
+#include <math.h>
+
 namespace MorphineMath
 {
 
@@ -78,7 +80,10 @@ ScalarTrunc
 	F32 s
 ) noexcept
 {
-	F32 x = static_cast<I32>(s);
+	F32 x;
+	{
+		x = static_cast<I32>(s);
+	}
 	return x;
 }
 
@@ -104,6 +109,209 @@ ScalarClamp
 		{
 			x = s;
 		}
+	}
+	return x;
+}
+
+F32	
+ScalarAbs
+(
+	F32 s
+) noexcept
+{
+	F32 x;
+	{
+		if (s < 0)
+		{
+			x = -s;
+		}
+		else
+		{
+			x = s;
+		}
+	}
+	return x;
+}
+
+F32	
+ScalarPow
+(
+	F32 s1,
+	F32 s2
+) noexcept
+{
+	F32 x;
+	{
+		//TODO
+		x = powf(s1, s2);
+	}
+	return x;
+}
+
+F32 
+ScalarSqrt
+(
+	F32 s
+) noexcept
+{
+	F32 x;
+	{
+		//TODO
+		x = sqrtf(s);
+	}
+	return x;
+}
+
+F32 
+ScalarExp2
+(
+	F32 s
+) noexcept
+{
+	F32 x;
+	{
+		//TODO
+		x = exp2f(s);
+	}
+	return x;
+}
+
+F32 
+ScalarExp
+(
+	F32 s
+) noexcept
+{
+	F32 x;
+	{
+		//TODO
+		x = expf(s);
+	}
+	return x;
+}
+
+F32	
+ScalarLog2
+(
+	F32 s
+) noexcept
+{
+	F32 x;
+	{
+		//TODO
+		x = log2f(s);
+	}
+	return x;
+}
+
+F32	
+ScalarLog10
+(
+	F32 s
+) noexcept
+{
+	F32 x;
+	{
+		//TODO
+		x = log10f(s);
+	}
+	return x;
+}
+
+F32	
+ScalarLog
+(
+	F32 s
+) noexcept
+{
+	F32 x;
+	{
+		//TODO
+		x = logf(s);
+	}
+	return x;
+}
+
+F32 
+ScalarSin
+(
+	F32 s
+) noexcept
+{
+	F32 x;
+	{
+		//TODO
+		x = sinf(s);
+	}
+	return x;
+}
+
+F32 
+ScalarCos
+(
+	F32 s
+) noexcept
+{
+	F32 x;
+	{
+		//TODO
+		x = cosf(s);
+	}
+	return x;
+}
+
+F32 
+ScalarTan
+(
+	F32 s
+) noexcept
+{
+	F32 x;
+	{
+		//TODO
+		x = tanf(s);
+	}
+	return x;
+}
+
+F32 
+ScalarArcSin
+(
+	F32 s
+) noexcept
+{
+	F32 x;
+	{
+		//TODO
+		x = asinf(s);
+	}
+	return x;
+}
+
+F32 
+ScalarArcCos
+(
+	F32 s
+) noexcept
+{
+	F32 x;
+	{
+		//TODO
+		x = acosf(s);
+	}
+	return x;
+}
+
+F32 
+ScalarArcTan
+(
+	F32 s
+) noexcept
+{
+	F32 x;
+	{
+		//TODO
+		x = atanf(s);
 	}
 	return x;
 }

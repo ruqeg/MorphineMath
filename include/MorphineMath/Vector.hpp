@@ -132,14 +132,11 @@ namespace MorphineMath
 		VECTOR	VectorScale(CVECTOR v, F32 s) noexcept;
 		VECTOR	VectorSqrt(CVECTOR v) noexcept;
 		VECTOR	VectorExp2(CVECTOR v) noexcept;
-		VECTOR	VectorExp10(CVECTOR v) noexcept;
-		VECTOR	VectorExpE(CVECTOR v) noexcept;
 		VECTOR	VectorExp(CVECTOR v) noexcept;
 		VECTOR	VectorLog2(CVECTOR v) noexcept;
 		VECTOR	VectorLog10(CVECTOR v) noexcept;
-		VECTOR	VectorLogE(CVECTOR v) noexcept;
 		VECTOR	VectorLog(CVECTOR v) noexcept;
-		VECTOR	VectorLogPow(CVECTOR v1, CVECTOR v2) noexcept;
+		VECTOR	VectorPow(CVECTOR v1, CVECTOR v2) noexcept;
 		VECTOR	VectorAbs(CVECTOR v) noexcept;
 		VECTOR	VectorCos(CVECTOR v) noexcept;
 		VECTOR	VectorSin(CVECTOR v) noexcept;
