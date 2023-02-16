@@ -589,13 +589,13 @@ VectorMin
 	CVECTOR v2
 ) noexcept
 {
-	VECTORF32 Result = { { {
+	VECTORF32 vResult = { { {
 		(v1.vector4_f32[0] < v2.vector4_f32[0]) ? v1.vector4_f32[0] : v2.vector4_f32[0],
 		(v1.vector4_f32[1] < v2.vector4_f32[1]) ? v1.vector4_f32[1] : v2.vector4_f32[1],
 		(v1.vector4_f32[2] < v2.vector4_f32[2]) ? v1.vector4_f32[2] : v2.vector4_f32[2],
 		(v1.vector4_f32[3] < v2.vector4_f32[3]) ? v1.vector4_f32[3] : v2.vector4_f32[3]
 	} } };
-	return Result.v;
+	return vResult.v;
 }
 
 VECTOR
@@ -605,13 +605,13 @@ VectorMax
 	CVECTOR v2
 ) noexcept
 {
-	VECTORF32 Result = { { {
+	VECTORF32 vResult = { { {
 		(v1.vector4_f32[0] > v2.vector4_f32[0]) ? v1.vector4_f32[0] : v2.vector4_f32[0],
 		(v1.vector4_f32[1] > v2.vector4_f32[1]) ? v1.vector4_f32[1] : v2.vector4_f32[1],
 		(v1.vector4_f32[2] > v2.vector4_f32[2]) ? v1.vector4_f32[2] : v2.vector4_f32[2],
 		(v1.vector4_f32[3] > v2.vector4_f32[3]) ? v1.vector4_f32[3] : v2.vector4_f32[3]
 	} } };
-	return Result.v;
+	return vResult.v;
 }
 
 VECTOR
@@ -620,13 +620,13 @@ VectorRound
 	CVECTOR v
 ) noexcept
 {
-	VECTORF32 Result = { { {
+	VECTORF32 vResult = { { {
 		ScalarRound(v.vector4_f32[0]),
 		ScalarRound(v.vector4_f32[1]),
 		ScalarRound(v.vector4_f32[2]),
 		ScalarRound(v.vector4_f32[3])
 	} } };
-	return Result.v;
+	return vResult.v;
 }
 
 VECTOR
@@ -635,13 +635,13 @@ VectorFloor
 	CVECTOR v
 ) noexcept
 {
-	VECTORF32 Result = { { {
+	VECTORF32 vResult = { { {
 		ScalarFloor(v.vector4_f32[0]),
 		ScalarFloor(v.vector4_f32[1]),
 		ScalarFloor(v.vector4_f32[2]),
 		ScalarFloor(v.vector4_f32[3])
 	} } };
-	return Result.v;
+	return vResult.v;
 }
 
 VECTOR
@@ -650,13 +650,13 @@ VectorCeil
 	CVECTOR v
 ) noexcept
 {
-	VECTORF32 Result = { { {
+	VECTORF32 vResult = { { {
 		ScalarCeil(v.vector4_f32[0]),
 		ScalarCeil(v.vector4_f32[1]),
 		ScalarCeil(v.vector4_f32[2]),
 		ScalarCeil(v.vector4_f32[3])
 	} } };
-	return Result.v;
+	return vResult.v;
 }
 
 VECTOR
@@ -665,13 +665,13 @@ VectorTrunc
 	CVECTOR v
 ) noexcept
 {
-	VECTORF32 Result = { { {
+	VECTORF32 vResult = { { {
 		ScalarTrunc(v.vector4_f32[0]),
 		ScalarTrunc(v.vector4_f32[1]),
 		ScalarTrunc(v.vector4_f32[2]),
 		ScalarTrunc(v.vector4_f32[3])
 	} } };
-	return Result.v;
+	return vResult.v;
 }
 
 
@@ -683,13 +683,13 @@ VectorClamp
 	CVECTOR vmax
 ) noexcept
 {
-	VECTORF32 Result = { { {
+	VECTORF32 vResult = { { {
 		ScalarClamp(v.vector4_f32[0], vmin.vector4_f32[0], vmax.vector4_f32[0]),
 		ScalarClamp(v.vector4_f32[1], vmin.vector4_f32[1], vmax.vector4_f32[1]),
 		ScalarClamp(v.vector4_f32[2], vmin.vector4_f32[2], vmax.vector4_f32[2]),
 		ScalarClamp(v.vector4_f32[3], vmin.vector4_f32[3], vmax.vector4_f32[3])
 	} } };
-	return Result.v;
+	return vResult.v;
 }
 
 VECTOR
@@ -699,13 +699,13 @@ VectorAndInt
 	CVECTOR v2
 ) noexcept
 {
-	VECTORU32 Result = { { {
+	VECTORU32 vResult = { { {
 		v1.vector4_u32[0] & v2.vector4_u32[0],
 		v1.vector4_u32[1] & v2.vector4_u32[1],
 		v1.vector4_u32[2] & v2.vector4_u32[2],
 		v1.vector4_u32[3] & v2.vector4_u32[3]
 	} } };
-	return Result.v;
+	return vResult.v;
 }
 
 VECTOR	
@@ -715,13 +715,13 @@ VectorOrInt
 	CVECTOR v2
 ) noexcept
 {
-	VECTORU32 Result = { { {
+	VECTORU32 vResult = { { {
 		v1.vector4_u32[0] | v2.vector4_u32[0],
 		v1.vector4_u32[1] | v2.vector4_u32[1],
 		v1.vector4_u32[2] | v2.vector4_u32[2],
 		v1.vector4_u32[3] | v2.vector4_u32[3]
 	} } };
-	return Result.v;
+	return vResult.v;
 }
 
 VECTOR
@@ -731,13 +731,13 @@ VectorNorInt
 	CVECTOR v2
 ) noexcept
 {
-	VECTORU32 Result = { { {
+	VECTORU32 vResult = { { {
 		~(v1.vector4_u32[0] | v2.vector4_u32[0]),
 		~(v1.vector4_u32[1] | v2.vector4_u32[1]),
 		~(v1.vector4_u32[2] | v2.vector4_u32[2]),
 		~(v1.vector4_u32[3] | v2.vector4_u32[3])
 	} } };
-	return Result.v;
+	return vResult.v;
 }
 
 VECTOR
@@ -747,13 +747,30 @@ VectorXorInt
 	CVECTOR v2
 ) noexcept
 {
-	VECTORU32 Result = { { {
+	VECTORU32 vResult = { { {
 		v1.vector4_u32[0] ^ v2.vector4_u32[0],
 		v1.vector4_u32[1] ^ v2.vector4_u32[1],
 		v1.vector4_u32[2] ^ v2.vector4_u32[2],
 		v1.vector4_u32[3] ^ v2.vector4_u32[3]
 	} } };
-	return Result.v;
+	return vResult.v;
+}
+
+VECTOR
+VectorSelect
+(
+	CVECTOR v1,
+	CVECTOR v2,
+	CVECTOR control
+)
+{
+	VECTORU32 vResult = { { {
+		(v1.vector4_u32[0] & control.vector4_u32[0]) | (v2.vector4_u32[0] & ~control.vector4_u32[0]),
+		(v1.vector4_u32[1] & control.vector4_u32[1]) | (v2.vector4_u32[1] & ~control.vector4_u32[1]),
+		(v1.vector4_u32[2] & control.vector4_u32[2]) | (v2.vector4_u32[2] & ~control.vector4_u32[2]),
+		(v1.vector4_u32[3] & control.vector4_u32[3]) | (v2.vector4_u32[3] & ~control.vector4_u32[3])
+	} } };
+	return vResult.v;
 }
 
 VECTOR
@@ -762,13 +779,13 @@ VectorNegate
 	CVECTOR v
 ) noexcept
 {
-	VECTORF32 Result = { { {
+	VECTORF32 vResult = { { {
 		-v.vector4_f32[0],
 		-v.vector4_f32[1],
 		-v.vector4_f32[2],
 		-v.vector4_f32[3]
 	} } };
-	return Result.v;
+	return vResult.v;
 }
 
 VECTOR
@@ -778,13 +795,13 @@ VectorAdd
 	CVECTOR v2
 ) noexcept
 {
-	VECTORF32 Result = { { {
+	VECTORF32 vResult = { { {
 		v1.vector4_f32[0] + v2.vector4_f32[0],
 		v1.vector4_f32[1] + v2.vector4_f32[1],
 		v1.vector4_f32[2] + v2.vector4_f32[2],
 		v1.vector4_f32[3] + v2.vector4_f32[3]
 	} } };
-	return Result.v;
+	return vResult.v;
 }
 
 VECTOR
@@ -794,13 +811,13 @@ VectorSubtract
 	CVECTOR v2
 ) noexcept
 {
-	VECTORF32 Result = { { {
+	VECTORF32 vResult = { { {
 		v1.vector4_f32[0] - v2.vector4_f32[0],
 		v1.vector4_f32[1] - v2.vector4_f32[1],
 		v1.vector4_f32[2] - v2.vector4_f32[2],
 		v1.vector4_f32[3] - v2.vector4_f32[3]
 	} } };
-	return Result.v;
+	return vResult.v;
 }
 
 VECTOR
@@ -810,13 +827,13 @@ VectorMultiply
 	CVECTOR v2
 ) noexcept
 {
-	VECTORF32 Result = { { {
+	VECTORF32 vResult = { { {
 		v1.vector4_f32[0] * v2.vector4_f32[0],
 		v1.vector4_f32[1] * v2.vector4_f32[1],
 		v1.vector4_f32[2] * v2.vector4_f32[2],
 		v1.vector4_f32[3] * v2.vector4_f32[3]
 	} } };
-	return Result.v;
+	return vResult.v;
 }
 
 VECTOR
@@ -827,13 +844,13 @@ VectorMultiplyAdd
 	CVECTOR v3
 ) noexcept
 {
-	VECTORF32 Result = { { {
+	VECTORF32 vResult = { { {
 		v1.vector4_f32[0] * v2.vector4_f32[0] + v3.vector4_f32[0],
 		v1.vector4_f32[1] * v2.vector4_f32[1] + v3.vector4_f32[1],
 		v1.vector4_f32[2] * v2.vector4_f32[2] + v3.vector4_f32[2],
 		v1.vector4_f32[3] * v2.vector4_f32[3] + v3.vector4_f32[3]
 	} } };
-	return Result.v;
+	return vResult.v;
 }
 
 VECTOR
@@ -843,13 +860,13 @@ VectorDivide
 	CVECTOR v2
 ) noexcept
 {
-	VECTORF32 Result = { { {
+	VECTORF32 vResult = { { {
 		v1.vector4_f32[0] / v2.vector4_f32[0],
 		v1.vector4_f32[1] / v2.vector4_f32[1],
 		v1.vector4_f32[2] / v2.vector4_f32[2],
 		v1.vector4_f32[3] / v2.vector4_f32[3]
 	} } };
-	return Result.v;
+	return vResult.v;
 }
 
 VECTOR
@@ -860,13 +877,13 @@ VectorDivideAdd
 	CVECTOR v3
 ) noexcept
 {
-	VECTORF32 Result = { { {
+	VECTORF32 vResult = { { {
 		v1.vector4_f32[0] / v2.vector4_f32[0] + v3.vector4_f32[0],
 		v1.vector4_f32[1] / v2.vector4_f32[1] + v3.vector4_f32[1],
 		v1.vector4_f32[2] / v2.vector4_f32[2] + v3.vector4_f32[2],
 		v1.vector4_f32[3] / v2.vector4_f32[3] + v3.vector4_f32[3]
 	} } };
-	return Result.v;
+	return vResult.v;
 }
 
 VECTOR
@@ -876,13 +893,13 @@ VectorScale
 	F32 s
 ) noexcept
 {
-	VECTORF32 Result = { { {
+	VECTORF32 vResult = { { {
 		v.vector4_f32[0] * s,
 		v.vector4_f32[1] * s,
 		v.vector4_f32[2] * s,
 		v.vector4_f32[3] * s
 	} } };
-	return Result.v;
+	return vResult.v;
 }
 
 VECTOR
@@ -891,13 +908,13 @@ VectorSqrt
 	CVECTOR v
 ) noexcept
 {
-	VECTORF32 Result = { { {
+	VECTORF32 vResult = { { {
 		ScalarSqrt(v.vector4_f32[0]),
 		ScalarSqrt(v.vector4_f32[1]),
 		ScalarSqrt(v.vector4_f32[2]),
 		ScalarSqrt(v.vector4_f32[3])
 	} } };
-	return Result.v;
+	return vResult.v;
 }
 
 VECTOR
@@ -906,13 +923,13 @@ VectorExp2
 	CVECTOR v
 ) noexcept
 {
-	VECTORF32 Result = { { {
+	VECTORF32 vResult = { { {
 		ScalarExp2(v.vector4_f32[0]),
 		ScalarExp2(v.vector4_f32[1]),
 		ScalarExp2(v.vector4_f32[2]),
 		ScalarExp2(v.vector4_f32[3])
 	} } };
-	return Result.v;
+	return vResult.v;
 }
 
 VECTOR
@@ -921,13 +938,13 @@ VectorExp
 	CVECTOR v
 ) noexcept
 {
-	VECTORF32 Result = { { {
+	VECTORF32 vResult = { { {
 		ScalarExp(v.vector4_f32[0]),
 		ScalarExp(v.vector4_f32[1]),
 		ScalarExp(v.vector4_f32[2]),
 		ScalarExp(v.vector4_f32[3])
 	} } };
-	return Result.v;
+	return vResult.v;
 }
 
 VECTOR
@@ -936,13 +953,13 @@ VectorLog2
 	CVECTOR v
 ) noexcept
 {
-	VECTORF32 Result = { { {
+	VECTORF32 vResult = { { {
 		ScalarLog2(v.vector4_f32[0]),
 		ScalarLog2(v.vector4_f32[1]),
 		ScalarLog2(v.vector4_f32[2]),
 		ScalarLog2(v.vector4_f32[3])
 	} } };
-	return Result.v;
+	return vResult.v;
 }
 
 VECTOR
@@ -951,13 +968,13 @@ VectorLog10
 	CVECTOR v
 ) noexcept
 {
-	VECTORF32 Result = { { {
+	VECTORF32 vResult = { { {
 		ScalarLog10(v.vector4_f32[0]),
 		ScalarLog10(v.vector4_f32[1]),
 		ScalarLog10(v.vector4_f32[2]),
 		ScalarLog10(v.vector4_f32[3])
 	} } };
-	return Result.v;
+	return vResult.v;
 }
 
 VECTOR
@@ -966,13 +983,13 @@ VectorLog
 	CVECTOR v
 ) noexcept
 {
-	VECTORF32 Result = { { {
+	VECTORF32 vResult = { { {
 		ScalarLog(v.vector4_f32[0]),
 		ScalarLog(v.vector4_f32[1]),
 		ScalarLog(v.vector4_f32[2]),
 		ScalarLog(v.vector4_f32[3])
 	} } };
-	return Result.v;
+	return vResult.v;
 }
 
 VECTOR
@@ -982,13 +999,13 @@ VectorPow
 	CVECTOR v2
 ) noexcept
 {
-	VECTORF32 Result = { { {
+	VECTORF32 vResult = { { {
 		ScalarPow(v1.vector4_f32[0], v2.vector4_f32[0]),
 		ScalarPow(v1.vector4_f32[1], v2.vector4_f32[1]),
 		ScalarPow(v1.vector4_f32[2], v2.vector4_f32[2]),
 		ScalarPow(v1.vector4_f32[3], v2.vector4_f32[3])
 	} } };
-	return Result.v;
+	return vResult.v;
 }
 
 VECTOR
@@ -997,13 +1014,13 @@ VectorAbs
 	CVECTOR v
 ) noexcept
 {
-	VECTORF32 Result = { { {
+	VECTORF32 vResult = { { {
 		ScalarAbs(v.vector4_f32[0]),
 		ScalarAbs(v.vector4_f32[1]),
 		ScalarAbs(v.vector4_f32[2]),
 		ScalarAbs(v.vector4_f32[3])
 	} } };
-	return Result.v;
+	return vResult.v;
 }
 
 VECTOR
@@ -1012,13 +1029,13 @@ VectorCos
 	CVECTOR v
 ) noexcept
 {
-	VECTORF32 Result = { { {
+	VECTORF32 vResult = { { {
 		ScalarCos(v.vector4_f32[0]),
 		ScalarCos(v.vector4_f32[1]),
 		ScalarCos(v.vector4_f32[2]),
 		ScalarCos(v.vector4_f32[3])
 	} } };
-	return Result.v;
+	return vResult.v;
 }
 
 VECTOR
@@ -1027,13 +1044,13 @@ VectorSin
 	CVECTOR v
 ) noexcept
 {
-	VECTORF32 Result = { { {
+	VECTORF32 vResult = { { {
 		ScalarSin(v.vector4_f32[0]),
 		ScalarSin(v.vector4_f32[1]),
 		ScalarSin(v.vector4_f32[2]),
 		ScalarSin(v.vector4_f32[3])
 	} } };
-	return Result.v;
+	return vResult.v;
 }
 
 VECTOR
@@ -1042,13 +1059,13 @@ VectorTan
 	CVECTOR v
 ) noexcept
 {
-	VECTORF32 Result = { { {
+	VECTORF32 vResult = { { {
 		ScalarTan(v.vector4_f32[0]),
 		ScalarTan(v.vector4_f32[1]),
 		ScalarTan(v.vector4_f32[2]),
 		ScalarTan(v.vector4_f32[3])
 	} } };
-	return Result.v;
+	return vResult.v;
 }
 
 VECTOR
@@ -1057,13 +1074,13 @@ VectorArcCos
 	CVECTOR v
 ) noexcept
 {
-	VECTORF32 Result = { { {
+	VECTORF32 vResult = { { {
 		ScalarArcCos(v.vector4_f32[0]),
 		ScalarArcCos(v.vector4_f32[1]),
 		ScalarArcCos(v.vector4_f32[2]),
 		ScalarArcCos(v.vector4_f32[3])
 	} } };
-	return Result.v;
+	return vResult.v;
 }
 
 VECTOR
@@ -1072,13 +1089,13 @@ VectorArcSin
 	CVECTOR v
 ) noexcept
 {
-	VECTORF32 Result = { { {
+	VECTORF32 vResult = { { {
 		ScalarArcSin(v.vector4_f32[0]),
 		ScalarArcSin(v.vector4_f32[1]),
 		ScalarArcSin(v.vector4_f32[2]),
 		ScalarArcSin(v.vector4_f32[3])
 	} } };
-	return Result.v;
+	return vResult.v;
 }
 
 VECTOR
@@ -1087,13 +1104,81 @@ VectorArcTan
 	CVECTOR v
 ) noexcept
 {
-	VECTORF32 Result = { { {
+	VECTORF32 vResult = { { {
 		ScalarArcTan(v.vector4_f32[0]),
 		ScalarArcTan(v.vector4_f32[1]),
 		ScalarArcTan(v.vector4_f32[2]),
 		ScalarArcTan(v.vector4_f32[3])
 	} } };
-	return Result.v;
+	return vResult.v;
+}
+
+VECTOR
+Vector3OrthoDot
+(
+	CVECTOR v1,
+	CVECTOR v2
+) noexcept
+{
+	F32 x;
+	{
+		x = v1.vector4_f32[0] * v2.vector4_f32[0];
+		x += v1.vector4_f32[1] * v2.vector4_f32[1];
+		x += v1.vector4_f32[2] * v2.vector4_f32[2];
+	}
+
+	VECTORF32 vResult;
+	vResult.f[0]
+		= vResult.f[1]
+		= vResult.f[2]
+		= vResult.f[3]
+		= x;
+	return vResult;
+}
+
+VECTOR
+Vector3OrthoTripleProduct
+(
+	CVECTOR v1,
+	CVECTOR v2,
+	CVECTOR v3
+) noexcept
+{
+	F32 x;
+	{
+		x = v1.vector4_f32[0] * (v2.vector4_f32[1] * v3.vector4_f32[2] - v2.vector4_f32[2] * v3.vector4_f32[1]);
+		x -= v1.vector4_f32[1] * (v2.vector4_f32[0] * v3.vector4_f32[2] - v2.vector4_f32[2] * v3.vector4_f32[0]);
+		x += v1.vector4_f32[2] * (v2.vector4_f32[0] * v3.vector4_f32[1] - v2.vector4_f32[1] * v3.vector4_f32[0]);
+	}
+
+	VECTORF32 vResult;
+	vResult.f[0]
+		= vResult.f[1]
+		= vResult.f[2]
+		= vResult.f[3]
+		= x;
+	return vResult;
+}
+
+VECTOR
+Vector3OrthoLength
+(
+	CVECTOR v
+) noexcept
+{
+	VECTOR vOrthoDotResult = Vector3OrthoDot(v, v);
+	VECTOR vResult = VectorSqrt(vOrthoDotResult);
+	return vResult;
+}
+
+VECTOR	
+Vector3OrthoLengthSq
+(
+	CVECTOR v
+) noexcept
+{
+	VECTOR vResult = Vector3OrthoDot(v, v);
+	return vResult;
 }
 
 }

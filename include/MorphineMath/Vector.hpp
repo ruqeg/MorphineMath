@@ -5,6 +5,11 @@
 
 namespace MorphineMath
 {
+	/**************************************************************************
+	*
+	* Types declaration
+	*
+	**************************************************************************/
 	struct VECTOR
 	{
 		union
@@ -38,6 +43,24 @@ namespace MorphineMath
 		operator VECTOR() const noexcept;
 	};
 
+	/****************************************************************************
+	 *
+	 * Constants
+	 *
+	 ****************************************************************************/
+	constexpr F32	C2PI = 6.2831853f;
+	constexpr F32	CPI = 3.1415927f;
+	constexpr F32	CPI2 = 1.5707964f;
+	constexpr F32	CPI4 = 0.7853982f;
+	constexpr F32	C1DIVPI = 0.31830987f;
+	constexpr F32	C1DIV2PI = 0.15915494f;
+	constexpr F32	C2DIVPI = 0.63661976f;
+
+	/**************************************************************************
+	*
+	* Common vector operations
+	*
+	**************************************************************************/
 #if defined(_MORPHINEMATH_VECTOR_OVERLOADS_)
 		VECTOR	operator+ (CVECTOR v) noexcept;
 		VECTOR	operator- (CVECTOR v) noexcept;
@@ -122,6 +145,8 @@ namespace MorphineMath
 		VECTOR	VectorNorInt(CVECTOR v1, CVECTOR v2) noexcept;
 		VECTOR	VectorXorInt(CVECTOR v1, CVECTOR v2) noexcept;
 
+		VECTOR	VectorSelect(CVECTOR v1, CVECTOR v2, CVECTOR control);
+
 		VECTOR	VectorNegate(CVECTOR v) noexcept;
 		VECTOR	VectorAdd(CVECTOR v1, CVECTOR v2) noexcept;
 		VECTOR	VectorSubtract(CVECTOR v1, CVECTOR v2) noexcept;
@@ -144,6 +169,23 @@ namespace MorphineMath
 		VECTOR	VectorArcCos(CVECTOR v) noexcept;
 		VECTOR	VectorArcSin(CVECTOR v) noexcept;
 		VECTOR	VectorArcTan(CVECTOR v) noexcept;
+
+		/**************************************************************************
+		*
+		* 3D vector operations
+		*
+		**************************************************************************/
+		VECTOR	Vector3OrthoDot(CVECTOR v1, CVECTOR v2) noexcept;
+		VECTOR	Vector3OrthoTripleProduct(CVECTOR v1, CVECTOR v2, CVECTOR v3) noexcept;
+		VECTOR	Vector3OrthoLength(CVECTOR v) noexcept;
+		VECTOR	Vector3OrthoLengthSq(CVECTOR v) noexcept;
+		//TODO VECTOR	Vector3OrthoClampLength(CVECTOR v, CVECTOR min, CVECTOR max) noexcept;
+		//TODO VECTOR	Vector3Cross(CVECTOR v) noexcept;
+		//TODO VECTOR	Vector3Normalize(CVECTOR v) noexcept;
+		//TODO VECTOR	Vector3Reflect(CVECTOR incident, CVECTOR normal) noexcept;
+		//TODO VECTOR	Vector3DBiorthogonalBasis(CVECTOR v, CVECTOR e) noexcept;
+		//TODO VECTOR	Vector3Project(CVECTOR v1, CVECTOR v2) noexcept;
+		//TODO VECTOR	Vector3Reject(CVECTOR v1, CVECTOR v2) noexcept;
 }
 
 #endif /*MORPHINE_MATH_VECTOR_HPP*/
