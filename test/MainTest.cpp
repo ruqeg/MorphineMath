@@ -408,6 +408,71 @@ TEST_CASE("MorphineMath::Vector")
             }
         }
     }
+    SUBCASE("MorphineMath::VectorCovector")
+    {
+        //Vector1
+        for (size_t i = 0; i < count; ++i)
+        {
+            const MorphineMath::VECTOR vRandom = randomVector(min, max);
+            const MorphineMath::VECTOR e1Random = randomVector(min, max);
+            MorphineMath::VECTOR covector;
+            {
+                covector.vector4_f32[0] = MorphineMath::Vector1OrthoNormDot(vRandom, e1Random).vector4_f32[0];
+                covector.vector4_f32[1] = 1.0f;
+                covector.vector4_f32[2] = 1.0f;
+                covector.vector4_f32[3] = 1.0f;
+            }
+            CHECK_VECTOR_EQUAL_VECTOR(covector, MorphineMath::Vector1Covector(vRandom, e1Random));
+        }
+        //Vector2
+        for (size_t i = 0; i < count; ++i)
+        {
+            const MorphineMath::VECTOR vRandom = randomVector(min, max);
+            const MorphineMath::VECTOR e1Random = randomVector(min, max);
+            const MorphineMath::VECTOR e2Random = randomVector(min, max);
+            MorphineMath::VECTOR covector;
+            {
+                covector.vector4_f32[0] = MorphineMath::Vector2OrthoNormDot(vRandom, e1Random).vector4_f32[0];
+                covector.vector4_f32[1] = MorphineMath::Vector2OrthoNormDot(vRandom, e2Random).vector4_f32[0];
+                covector.vector4_f32[2] = 1.0f;
+                covector.vector4_f32[3] = 1.0f;
+            }
+            CHECK_VECTOR_EQUAL_VECTOR(covector, MorphineMath::Vector2Covector(vRandom, e1Random, e2Random));
+        }
+        //Vector3
+        for (size_t i = 0; i < count; ++i)
+        {
+            const MorphineMath::VECTOR vRandom = randomVector(min, max);
+            const MorphineMath::VECTOR e1Random = randomVector(min, max);
+            const MorphineMath::VECTOR e2Random = randomVector(min, max);
+            const MorphineMath::VECTOR e3Random = randomVector(min, max);
+            MorphineMath::VECTOR covector;
+            {
+                covector.vector4_f32[0] = MorphineMath::Vector3OrthoNormDot(vRandom, e1Random).vector4_f32[0];
+                covector.vector4_f32[1] = MorphineMath::Vector3OrthoNormDot(vRandom, e2Random).vector4_f32[0];
+                covector.vector4_f32[2] = MorphineMath::Vector3OrthoNormDot(vRandom, e3Random).vector4_f32[0];
+                covector.vector4_f32[3] = 1.0f;
+            }
+            CHECK_VECTOR_EQUAL_VECTOR(covector, MorphineMath::Vector3Covector(vRandom, e1Random, e2Random, e3Random));
+        }
+        //Vector4
+        for (size_t i = 0; i < count; ++i)
+        {
+            const MorphineMath::VECTOR vRandom = randomVector(min, max);
+            const MorphineMath::VECTOR e1Random = randomVector(min, max);
+            const MorphineMath::VECTOR e2Random = randomVector(min, max);
+            const MorphineMath::VECTOR e3Random = randomVector(min, max);
+            const MorphineMath::VECTOR e4Random = randomVector(min, max);
+            MorphineMath::VECTOR covector;
+            {
+                covector.vector4_f32[0] = MorphineMath::Vector4OrthoNormDot(vRandom, e1Random).vector4_f32[0];
+                covector.vector4_f32[1] = MorphineMath::Vector4OrthoNormDot(vRandom, e2Random).vector4_f32[0];
+                covector.vector4_f32[2] = MorphineMath::Vector4OrthoNormDot(vRandom, e3Random).vector4_f32[0];
+                covector.vector4_f32[3] = MorphineMath::Vector4OrthoNormDot(vRandom, e4Random).vector4_f32[0];
+            }
+            CHECK_VECTOR_EQUAL_VECTOR(covector, MorphineMath::Vector4Covector(vRandom, e1Random, e2Random, e3Random, e4Random));
+        }
+    }
     SUBCASE("MorphineMath::VectorOrthoNormLength")
     {
         //Vector1

@@ -156,7 +156,7 @@ Vector2Covector
 	VECTOR vResult;
 	{
 		vResult.vector4_f32[0] = Vector2OrthoNormDot(v, e1).vector4_f32[0];
-		vResult.vector4_f32[1] = Vector2OrthoNormDot(v, e2).vector4_f32[1];
+		vResult.vector4_f32[1] = Vector2OrthoNormDot(v, e2).vector4_f32[0];
 		vResult.vector4_f32[2] = 1.0f;
 		vResult.vector4_f32[3] = 1.0f;
 	}
@@ -266,8 +266,8 @@ Vector3Covector
 	VECTOR vResult;
 	{
 		vResult.vector4_f32[0] = Vector3OrthoNormDot(v, e1).vector4_f32[0];
-		vResult.vector4_f32[1] = Vector3OrthoNormDot(v, e2).vector4_f32[1];
-		vResult.vector4_f32[2] = Vector3OrthoNormDot(v, e3).vector4_f32[2];
+		vResult.vector4_f32[1] = Vector3OrthoNormDot(v, e2).vector4_f32[0];
+		vResult.vector4_f32[2] = Vector3OrthoNormDot(v, e3).vector4_f32[0];
 		vResult.vector4_f32[3] = 1.0f;
 	}
 	return vResult;
@@ -379,9 +379,9 @@ Vector4Covector
 	VECTOR vResult;
 	{
 		vResult.vector4_f32[0] = Vector4OrthoNormDot(v, e1).vector4_f32[0];
-		vResult.vector4_f32[1] = Vector4OrthoNormDot(v, e2).vector4_f32[1];
-		vResult.vector4_f32[2] = Vector4OrthoNormDot(v, e3).vector4_f32[2];
-		vResult.vector4_f32[3] = Vector4OrthoNormDot(v, e4).vector4_f32[3];
+		vResult.vector4_f32[1] = Vector4OrthoNormDot(v, e2).vector4_f32[0];
+		vResult.vector4_f32[2] = Vector4OrthoNormDot(v, e3).vector4_f32[0];
+		vResult.vector4_f32[3] = Vector4OrthoNormDot(v, e4).vector4_f32[0];
 	}
 	return vResult;
 }
