@@ -1,3 +1,23 @@
+﻿/*
+ *	BASIC AXIOMS:
+ *	1. a + b = b + a                        a, b - vectors;
+ *	2. (a + b) + c = a + (b + c)            a, b, c - vectors;
+ *	3. a + 0 = a                            a, 0 - vectors;
+ *	4. a + (-1)a = 0                        a, 0 - vectors;
+ *	5. (αβ)a = α(βa)                        a - vectors; α, β - scalars;
+ *	6. (α + β)a = αa + βa                   a - vectors; α, β - scalars;
+ *	7. α(a + b) = αa + αb                   a, b - vectors; α - scalars;
+ *	8. 1a = a                               a - vectors;
+ *
+ *	DECLARATONS:
+ *	1. -a = (-1)a                           a - vectors;
+ *
+ *	VECTOR:
+ *	a = (α1)e1 + (α2)e2 + ... + (αn)en      a, en - vectors; αn - scalars; en - basis;
+ *	a = (α1, α2, ..., αn)                   a - vectors; αn - scalars;
+ *
+ */
+
 #ifndef MORPHINE_MATH_VECTOR_HPP
 #define MORPHINE_MATH_VECTOR_HPP
 
@@ -69,7 +89,11 @@ namespace MorphineMath
 		VECTOR	operator* (F32 s, CVECTOR v) noexcept;
 		VECTOR	operator/ (CVECTOR v, F2 s) noexcept;
 #endif
-
+		/**************************************************************************
+		*
+		* Basic vector operations
+		*
+		**************************************************************************/
 		VECTOR	VectorZero() noexcept;
 		VECTOR	VectorSet(F32 x, F32 y, F32 z, F32 w) noexcept;
 		VECTOR	VectorSetInt(U32 x, U32 y, U32 z, U32 w) noexcept;
@@ -163,16 +187,17 @@ namespace MorphineMath
 		* 3D vector operations
 		*
 		**************************************************************************/
-		VECTOR	Vector3OrthoDot(CVECTOR v1, CVECTOR v2) noexcept;
-		VECTOR	Vector3OrthoTripleProduct(CVECTOR v1, CVECTOR v2, CVECTOR v3) noexcept;
-		VECTOR	Vector3OrthoLength(CVECTOR v) noexcept;
-		VECTOR	Vector3OrthoLengthSq(CVECTOR v) noexcept;
+		VECTOR	Vector3OrthoNormDot(CVECTOR v1, CVECTOR v2) noexcept;
+		VECTOR	Vector3OrthoNormTripleProduct(CVECTOR v1, CVECTOR v2, CVECTOR v3) noexcept;
+		VECTOR	Vector3OrthoNormLength(CVECTOR v) noexcept;
+		VECTOR	Vector3OrthoNormLengthSq(CVECTOR v) noexcept;
 		//TODO VECTOR	Vector3OrthoClampLength(CVECTOR v, CVECTOR min, CVECTOR max) noexcept;
 		VECTOR	Vector3Cross(CVECTOR v1, CVECTOR v2) noexcept;
 		VECTOR	Vector3OrthoNormalize(CVECTOR v) noexcept;
-		//TODO VECTOR	Vector3DBiorthogonalBasis(CVECTOR v, CVECTOR e) noexcept;
 		//TODO VECTOR	Vector3Project(CVECTOR v1, CVECTOR v2) noexcept;
 		//TODO VECTOR	Vector3Reject(CVECTOR v1, CVECTOR v2) noexcept;
+		//TODO VECTOR	Vector3Covector(CVECTOR v, CVECTOR e) noexcept;
+		//TODO VECTOR	Vector3Dot(CVECTOR v1, CVECTOR v2) noexcept;
 }
 
 #endif /*MORPHINE_MATH_VECTOR_HPP*/

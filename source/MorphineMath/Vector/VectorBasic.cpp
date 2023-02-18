@@ -1,4 +1,12 @@
-#include "../../include/MorphineMath/Vector.hpp"
+﻿/*
+ *
+ *	BASIC OPERATONS:
+ *	1. a + b = (α1 + β1, α2 + β2, ..., αn + βn)         a, b - vectors;
+ *	2. a * b = (α1 * β1, α2 * β2, ..., αn * βn)         a, b - vectors;
+ *
+ */
+
+#include "../../../include/MorphineMath/Vector.hpp"
 
 namespace MorphineMath
 {
@@ -1111,123 +1119,6 @@ VectorArcTan
 		ScalarArcTan(v.vector4_f32[3])
 	} } };
 	return vResult.v;
-}
-
-VECTOR
-Vector3OrthoDot
-(
-	CVECTOR v1,
-	CVECTOR v2
-) noexcept
-{
-	F32 fDot;
-	{
-		fDot = v1.vector4_f32[0] * v2.vector4_f32[0];
-		fDot += v1.vector4_f32[1] * v2.vector4_f32[1];
-		fDot += v1.vector4_f32[2] * v2.vector4_f32[2];
-	}
-
-	VECTORF32 vResult;
-	{
-		vResult.f[0] = fDot;
-		vResult.f[1] = fDot;
-		vResult.f[2] = fDot;
-		vResult.f[3] = fDot;
-	}
-	return vResult;
-}
-
-VECTOR
-Vector3OrthoTripleProduct
-(
-	CVECTOR v1,
-	CVECTOR v2,
-	CVECTOR v3
-) noexcept
-{
-	F32 fTripleProduct;
-	{
-		fTripleProduct = v1.vector4_f32[0] * (v2.vector4_f32[1] * v3.vector4_f32[2] - v2.vector4_f32[2] * v3.vector4_f32[1]);
-		fTripleProduct -= v1.vector4_f32[1] * (v2.vector4_f32[0] * v3.vector4_f32[2] - v2.vector4_f32[2] * v3.vector4_f32[0]);
-		fTripleProduct += v1.vector4_f32[2] * (v2.vector4_f32[0] * v3.vector4_f32[1] - v2.vector4_f32[1] * v3.vector4_f32[0]);
-	}
-
-	VECTORF32 vResult;
-	{
-		vResult.f[0] = fTripleProduct;
-		vResult.f[1] = fTripleProduct;
-		vResult.f[2] = fTripleProduct;
-		vResult.f[3] = fTripleProduct;
-	}
-	return vResult;
-}
-
-VECTOR
-Vector3OrthoLength
-(
-	CVECTOR v
-) noexcept
-{
-	VECTOR vOrthoDotResult = Vector3OrthoDot(v, v);
-	VECTOR vResult = VectorSqrt(vOrthoDotResult);
-	return vResult;
-}
-
-VECTOR	
-Vector3OrthoLengthSq
-(
-	CVECTOR v
-) noexcept
-{
-	VECTOR vResult = Vector3OrthoDot(v, v);
-	return vResult;
-}
-
-VECTOR
-Vector3Cross
-(
-	CVECTOR v1,
-	CVECTOR v2
-) noexcept
-{
-	VECTORF32 vResult;
-	{
-		vResult.f[0] = v1.vector4_f32[1] * v2.vector4_f32[2] - v1.vector4_f32[2] * v2.vector4_f32[1];
-		vResult.f[1] = v1.vector4_f32[2] * v2.vector4_f32[0] - v1.vector4_f32[0] * v2.vector4_f32[2];
-		vResult.f[2] = v1.vector4_f32[0] * v2.vector4_f32[1] - v1.vector4_f32[1] * v2.vector4_f32[0];
-		vResult.f[3] = 0.0f;
-	}
-	return vResult;
-}
-
-VECTOR
-Vector3OrthoNormalize
-(
-	CVECTOR v
-) noexcept
-{
-	VECTOR vLength = Vector3OrthoLength(v);
-	F32 fLength = vLength.vector4_f32[0];
-	F32 fInvLength;
-	{
-		if (fLength > 0)
-		{
-			fInvLength = 1.0f / fLength;
-		}
-		else
-		{
-			fInvLength = CMAXF32;
-		}
-	}
-
-	VECTOR vResult;
-	{
-		vResult.vector4_f32[0] = v.vector4_f32[0] * fInvLength;
-		vResult.vector4_f32[1] = v.vector4_f32[1] * fInvLength;
-		vResult.vector4_f32[2] = v.vector4_f32[2] * fInvLength;
-		vResult.vector4_f32[3] = v.vector4_f32[3];
-	}
-	return vResult;
 }
 
 }
