@@ -66,7 +66,7 @@ namespace MorphineMath
 
 	/**************************************************************************
 	*
-	* Common vector operations
+	* Common vector operations overloads
 	*
 	**************************************************************************/
 #if defined(_MORPHINEMATH_VECTOR_OVERLOADS_)
@@ -91,7 +91,7 @@ namespace MorphineMath
 #endif
 		/**************************************************************************
 		*
-		* Basic vector operations
+		* Common vector operations
 		*
 		**************************************************************************/
 		VECTOR	VectorZero() noexcept;
@@ -184,20 +184,75 @@ namespace MorphineMath
 
 		/**************************************************************************
 		*
+		* 1D vector operations
+		*
+		**************************************************************************/
+		VECTOR	Vector1Covector(CVECTOR v, CVECTOR e1) noexcept;
+		VECTOR	Vector1Dot(CVECTOR v1, CVECTOR v2, CVECTOR e1, VECTOR* cov = nullptr) noexcept;
+		VECTOR	Vector1OrthoNormDot(CVECTOR v1, CVECTOR v2) noexcept;
+		VECTOR	Vector1OrthoNormLength(CVECTOR v) noexcept;
+		VECTOR	Vector1OrthoNormLengthSq(CVECTOR v) noexcept;
+		VECTOR	Vector1OrthoNormNormalize(CVECTOR v) noexcept;
+		//TODO VECTOR	Vector1OrthoNormTripleProduct(CVECTOR v1, CVECTOR v2, CVECTOR v3) noexcept;
+		//TODO VECTOR	Vector1OrthoClampLength(CVECTOR v, CVECTOR min, CVECTOR max) noexcept;
+		//TODO VECTOR	Vector1Cross(CVECTOR v1, CVECTOR v2) noexcept;
+		//TODO VECTOR	Vector1Project(CVECTOR v1, CVECTOR v2) noexcept;
+		//TODO VECTOR	Vector1Reject(CVECTOR v1, CVECTOR v2) noexcept;
+		//TODO ...
+
+		/**************************************************************************
+		*
+		* 2D vector operations
+		*
+		**************************************************************************/
+		VECTOR	Vector2Covector(CVECTOR v, CVECTOR e1, CVECTOR e2) noexcept;
+		VECTOR	Vector2Dot(CVECTOR v1, CVECTOR v2, CVECTOR e1, CVECTOR e2, VECTOR* cov = nullptr) noexcept;
+		VECTOR	Vector2OrthoNormDot(CVECTOR v1, CVECTOR v2) noexcept;
+		VECTOR	Vector2OrthoNormLength(CVECTOR v) noexcept;
+		VECTOR	Vector2OrthoNormLengthSq(CVECTOR v) noexcept;
+		VECTOR	Vector2OrthoNormNormalize(CVECTOR v) noexcept;
+		//TODO VECTOR	Vector2OrthoNormTripleProduct(CVECTOR v1, CVECTOR v2, CVECTOR v3) noexcept;
+		//TODO VECTOR	Vector2OrthoClampLength(CVECTOR v, CVECTOR min, CVECTOR max) noexcept;
+		//TODO VECTOR	Vector2Cross(CVECTOR v1, CVECTOR v2) noexcept;
+		//TODO VECTOR	Vector2Project(CVECTOR v1, CVECTOR v2) noexcept;
+		//TODO VECTOR	Vector2Reject(CVECTOR v1, CVECTOR v2) noexcept;
+		//TODO ...
+
+		/**************************************************************************
+		*
 		* 3D vector operations
 		*
 		**************************************************************************/
+		VECTOR	Vector3Covector(CVECTOR v, CVECTOR e1, CVECTOR e2, CVECTOR e3) noexcept;
+		VECTOR	Vector3Dot(CVECTOR v1, CVECTOR v2, CVECTOR e1, CVECTOR e2, CVECTOR e3, VECTOR* cov = nullptr) noexcept;
 		VECTOR	Vector3OrthoNormDot(CVECTOR v1, CVECTOR v2) noexcept;
-		VECTOR	Vector3OrthoNormTripleProduct(CVECTOR v1, CVECTOR v2, CVECTOR v3) noexcept;
 		VECTOR	Vector3OrthoNormLength(CVECTOR v) noexcept;
 		VECTOR	Vector3OrthoNormLengthSq(CVECTOR v) noexcept;
+		VECTOR	Vector3OrthoNormNormalize(CVECTOR v) noexcept;
+		//TODO VECTOR	Vector3OrthoNormTripleProduct(CVECTOR v1, CVECTOR v2, CVECTOR v3) noexcept;
 		//TODO VECTOR	Vector3OrthoClampLength(CVECTOR v, CVECTOR min, CVECTOR max) noexcept;
-		VECTOR	Vector3Cross(CVECTOR v1, CVECTOR v2) noexcept;
-		VECTOR	Vector3OrthoNormalize(CVECTOR v) noexcept;
+		//TODO VECTOR	Vector3Cross(CVECTOR v1, CVECTOR v2) noexcept;
 		//TODO VECTOR	Vector3Project(CVECTOR v1, CVECTOR v2) noexcept;
 		//TODO VECTOR	Vector3Reject(CVECTOR v1, CVECTOR v2) noexcept;
-		//TODO VECTOR	Vector3Covector(CVECTOR v, CVECTOR e) noexcept;
-		//TODO VECTOR	Vector3Dot(CVECTOR v1, CVECTOR v2) noexcept;
+		//TODO ...
+
+		/**************************************************************************
+		*
+		* 4D vector operations
+		*
+		**************************************************************************/
+		VECTOR	Vector4Covector(CVECTOR v, CVECTOR e1, CVECTOR e2, CVECTOR e3, CVECTOR e4) noexcept;
+		VECTOR	Vector4Dot(CVECTOR v1, CVECTOR v2, CVECTOR e1, CVECTOR e2, CVECTOR e3, CVECTOR e4, VECTOR* cov = nullptr) noexcept;
+		VECTOR	Vector4OrthoNormDot(CVECTOR v1, CVECTOR v2) noexcept;
+		VECTOR	Vector4OrthoNormLength(CVECTOR v) noexcept;
+		VECTOR	Vector4OrthoNormLengthSq(CVECTOR v) noexcept;
+		VECTOR	Vector4OrthoNormNormalize(CVECTOR v) noexcept;
+		//TODO VECTOR	Vector4OrthoNormTripleProduct(CVECTOR v1, CVECTOR v2, CVECTOR v3) noexcept;
+		//TODO VECTOR	Vector4OrthoClampLength(CVECTOR v, CVECTOR min, CVECTOR max) noexcept;
+		//TODO VECTOR	Vector4Cross(CVECTOR v1, CVECTOR v2) noexcept;
+		//TODO VECTOR	Vector4Project(CVECTOR v1, CVECTOR v2) noexcept;
+		//TODO VECTOR	Vector4Reject(CVECTOR v1, CVECTOR v2) noexcept;
+		//TODO ...
 }
 
 #endif /*MORPHINE_MATH_VECTOR_HPP*/

@@ -1,3 +1,4 @@
+/*
 #include "../../../include/MorphineMath/Vector.hpp"
 
 namespace MorphineMath
@@ -28,4 +29,4 @@ Vector3OrthoTripleProduct
 	return vResult;
 }
 
-}
+}*/

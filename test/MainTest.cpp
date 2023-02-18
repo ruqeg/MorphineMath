@@ -344,8 +344,22 @@ TEST_CASE("MorphineMath::Vector")
             ));
         }
     }
-    SUBCASE("MorphineMath::Vector3OrthoDot")
+    SUBCASE("MorphineMath::Vector3Dot")
     {
+        //Vector1
+        for (size_t i = 0; i < count; ++i)
+        {
+            const MorphineMath::VECTOR vRandom1 = randomVector(min, max);
+            const MorphineMath::VECTOR vRandom2 = randomVector(min, max);
+            MorphineMath::VECTOR vDot;
+            vDot.vector4_f32[0]
+                = vDot.vector4_f32[1]
+                = vDot.vector4_f32[2]
+                = vDot.vector4_f32[3]
+                = VectorGetX(vRandom1) * VectorGetX(vRandom2);
+            CHECK_VECTOR_EQUAL_VECTOR(vDot, MorphineMath::Vector1OrthoNormDot(vRandom1, vRandom2));
+        }
+        //Vector2
         for (size_t i = 0; i < count; ++i)
         {
             const MorphineMath::VECTOR vRandom1 = randomVector(min, max);
@@ -356,69 +370,39 @@ TEST_CASE("MorphineMath::Vector")
                 = vDot.vector4_f32[2]
                 = vDot.vector4_f32[3]
                 = VectorGetX(vRandom1) * VectorGetX(vRandom2)
-                    + VectorGetY(vRandom1) * VectorGetY(vRandom2) 
-                    + VectorGetZ(vRandom1) * VectorGetZ(vRandom2);
-            CHECK_VECTOR_EQUAL_VECTOR(vDot, MorphineMath::Vector3OrthoDot(vRandom1, vRandom2));
+                + VectorGetY(vRandom1) * VectorGetY(vRandom2);
+            CHECK_VECTOR_EQUAL_VECTOR(vDot, MorphineMath::Vector2OrthoNormDot(vRandom1, vRandom2));
         }
-    }
-    SUBCASE("MorphineMath::Vector3OrthoTripleProduct")
-    {
+        //Vector3
         for (size_t i = 0; i < count; ++i)
         {
             const MorphineMath::VECTOR vRandom1 = randomVector(min, max);
             const MorphineMath::VECTOR vRandom2 = randomVector(min, max);
-            const MorphineMath::VECTOR vRandom3 = randomVector(min, max);
-            MorphineMath::VECTOR vTriplePorduct;
-            vTriplePorduct.vector4_f32[0]
-                = vTriplePorduct.vector4_f32[1]
-                = vTriplePorduct.vector4_f32[2]
-                = vTriplePorduct.vector4_f32[3]
-                = VectorGetX(vRandom1) * (VectorGetY(vRandom2) * VectorGetZ(vRandom3) - VectorGetZ(vRandom2) * VectorGetY(vRandom3))
-                    - VectorGetY(vRandom1) * (VectorGetX(vRandom2) * VectorGetZ(vRandom3) - VectorGetZ(vRandom2) * VectorGetX(vRandom3))
-                    + VectorGetZ(vRandom1) * (VectorGetX(vRandom2) * VectorGetY(vRandom3) - VectorGetY(vRandom2) * VectorGetX(vRandom3));
-            CHECK_VECTOR_EQUAL_VECTOR(vTriplePorduct, MorphineMath::Vector3OrthoTripleProduct(vRandom1, vRandom2, vRandom3));
+            MorphineMath::VECTOR vDot;
+            vDot.vector4_f32[0]
+                = vDot.vector4_f32[1]
+                = vDot.vector4_f32[2]
+                = vDot.vector4_f32[3]
+                = VectorGetX(vRandom1) * VectorGetX(vRandom2)
+                + VectorGetY(vRandom1) * VectorGetY(vRandom2)
+                + VectorGetZ(vRandom1) * VectorGetZ(vRandom2);
+            CHECK_VECTOR_EQUAL_VECTOR(vDot, MorphineMath::Vector3OrthoNormDot(vRandom1, vRandom2));
         }
-    }
-    SUBCASE("MorphineMath::Vector3Cross")
-    {
+        //Vector4
         for (size_t i = 0; i < count; ++i)
         {
             const MorphineMath::VECTOR vRandom1 = randomVector(min, max);
             const MorphineMath::VECTOR vRandom2 = randomVector(min, max);
-            MorphineMath::VECTOR vCross;
-            {
-                vCross.vector4_f32[0] = VectorGetY(vRandom1) * VectorGetZ(vRandom2) - VectorGetZ(vRandom1) * VectorGetY(vRandom2);
-                vCross.vector4_f32[1] = -(VectorGetX(vRandom1) * VectorGetZ(vRandom2) - VectorGetZ(vRandom1) * VectorGetX(vRandom2));
-                vCross.vector4_f32[2] = VectorGetX(vRandom1) * VectorGetY(vRandom2) - VectorGetY(vRandom1) * VectorGetX(vRandom2);
-                vCross.vector4_f32[3] = 0.0f;
-            }
-            CHECK_VECTOR_EQUAL_VECTOR(vCross, MorphineMath::Vector3Cross(vRandom1, vRandom2));
-        }
-    }
-    SUBCASE("MorphineMath::Vector3OrthoNormalize")
-    {
-        for (size_t i = 0; i < count; ++i)
-        {
-            const MorphineMath::VECTOR vRandom = randomVector(min, max);
-            MorphineMath::VECTOR vRandomNormilize;
-            {
-                MorphineMath::F32 length = VectorGetX(MorphineMath::Vector3OrthoLength(vRandom));
-                MorphineMath::F32 invLength;
-                if (length > 0)
-                {
-                    invLength = 1.0f / length;
-                }
-                else
-                {
-                    invLength = MorphineMath::CMAXF32;
-                }
-                vRandomNormilize.vector4_f32[0] = VectorGetX(vRandom) * invLength;
-                vRandomNormilize.vector4_f32[1] = VectorGetY(vRandom) * invLength;
-                vRandomNormilize.vector4_f32[2] = VectorGetZ(vRandom) * invLength;
-                vRandomNormilize.vector4_f32[3] = VectorGetW(vRandom);
-            }
-            MorphineMath::VECTOR vMorphineRandomNormilize = MorphineMath::Vector3OrthoNormalize(vRandom);
-            CHECK_VECTOR_EQUAL_VECTOR(vRandomNormilize, vMorphineRandomNormilize);
+            MorphineMath::VECTOR vDot;
+            vDot.vector4_f32[0]
+                = vDot.vector4_f32[1]
+                = vDot.vector4_f32[2]
+                = vDot.vector4_f32[3]
+                = VectorGetX(vRandom1) * VectorGetX(vRandom2)
+                + VectorGetY(vRandom1) * VectorGetY(vRandom2)
+                + VectorGetZ(vRandom1) * VectorGetZ(vRandom2)
+                + VectorGetW(vRandom1) * VectorGetW(vRandom2);
+            CHECK_VECTOR_EQUAL_VECTOR(vDot, MorphineMath::Vector4OrthoNormDot(vRandom1, vRandom2));
         }
     }
 }

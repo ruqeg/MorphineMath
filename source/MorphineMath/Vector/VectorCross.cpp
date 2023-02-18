@@ -1,4 +1,4 @@
-#include "../../../include/MorphineMath/Vector.hpp"
+/*#include "../../../include/MorphineMath/Vector.hpp"
 
 namespace MorphineMath
 {
@@ -20,4 +20,4 @@ Vector3Cross
 	return vResult;
 }
 
-}
+}*/
