@@ -12,8 +12,8 @@ ScalarRound
 ) noexcept
 {
 	//TODO
-    F32 x = ScalarFloor(s);
-    F32 y = s - x;
+	F32 x = ScalarFloor(s);
+	F32 y = s - x;
 	F32 z; 
 	{
 		if (y < 0.5f)

@@ -146,7 +146,7 @@ Vector1OrthoNormNormalize
 }
 
 VECTOR
-Vector1OrthoNormAngle
+Vector1OrthoNormCos
 (
 	CVECTOR v1,
 	CVECTOR v2
@@ -154,14 +154,14 @@ Vector1OrthoNormAngle
 {
 	VECTOR vDot = Vector1OrthoNormDot(v1, v2);
 	VECTOR vLength1 = Vector1OrthoNormLengthSq(v1);
-	VECTOR vLength2 = Vector1OrthoNormLengthSq(v1);
+	VECTOR vLength2 = Vector1OrthoNormLengthSq(v2);
 	F32 fDot = vDot.vector4_f32[0];
-	F32 fInvLength1 = 1.0f / vLength1.vector4_f32[0];
-	F32 fInvLength2 = 1.0f / vLength2.vector4_f32[0];
-	F32 fMul = fInvLength1 * fInvLength2;
+	F32 fLength1 = vLength1.vector4_f32[0];
+	F32 fLength2 = vLength2.vector4_f32[0];
+	F32 fMul = fLength1 * fLength2;
 	F32 fSqrtMul = ScalarSqrt(fMul);
-	F32 fAngle = fDot * fSqrtMul;
-	VECTOR vResult = VectorFill(fAngle);
+	F32 fCos = fDot / fSqrtMul;
+	VECTOR vResult = VectorFill(fCos);
 	return vResult;
 }
 
@@ -275,7 +275,7 @@ Vector2OrthoNormNormalize
 }
 
 VECTOR
-Vector2OrthoNormAngle
+Vector2OrthoNormCos
 (
 	CVECTOR v1,
 	CVECTOR v2
@@ -283,14 +283,14 @@ Vector2OrthoNormAngle
 {
 	VECTOR vDot = Vector2OrthoNormDot(v1, v2);
 	VECTOR vLength1 = Vector2OrthoNormLengthSq(v1);
-	VECTOR vLength2 = Vector2OrthoNormLengthSq(v1);
+	VECTOR vLength2 = Vector2OrthoNormLengthSq(v2);
 	F32 fDot = vDot.vector4_f32[0];
-	F32 fInvLength1 = 1.0f / vLength1.vector4_f32[0];
-	F32 fInvLength2 = 1.0f / vLength2.vector4_f32[0];
-	F32 fMul = fInvLength1 * fInvLength2;
+	F32 fLength1 = vLength1.vector4_f32[0];
+	F32 fLength2 = vLength2.vector4_f32[0];
+	F32 fMul = fLength1 * fLength2;
 	F32 fSqrtMul = ScalarSqrt(fMul);
-	F32 fAngle = fDot * fSqrtMul;
-	VECTOR vResult = VectorFill(fAngle);
+	F32 fCos = fDot / fSqrtMul;
+	VECTOR vResult = VectorFill(fCos);
 	return vResult;
 }
 
@@ -407,7 +407,7 @@ Vector3OrthoNormNormalize
 }
 
 VECTOR
-Vector3OrthoNormAngle
+Vector3OrthoNormCos
 (
 	CVECTOR v1,
 	CVECTOR v2
@@ -415,14 +415,14 @@ Vector3OrthoNormAngle
 {
 	VECTOR vDot = Vector3OrthoNormDot(v1, v2);
 	VECTOR vLength1 = Vector3OrthoNormLengthSq(v1);
-	VECTOR vLength2 = Vector3OrthoNormLengthSq(v1);
+	VECTOR vLength2 = Vector3OrthoNormLengthSq(v2);
 	F32 fDot = vDot.vector4_f32[0];
-	F32 fInvLength1 = 1.0f / vLength1.vector4_f32[0];
-	F32 fInvLength2 = 1.0f / vLength2.vector4_f32[0];
-	F32 fMul = fInvLength1 * fInvLength2;
+	F32 fLength1 = vLength1.vector4_f32[0];
+	F32 fLength2 = vLength2.vector4_f32[0];
+	F32 fMul = fLength1 * fLength2;
 	F32 fSqrtMul = ScalarSqrt(fMul);
-	F32 fAngle = fDot * fSqrtMul;
-	VECTOR vResult = VectorFill(fAngle);
+	F32 fCos = fDot / fSqrtMul;
+	VECTOR vResult = VectorFill(fCos);
 	return vResult;
 }
 
@@ -542,7 +542,7 @@ Vector4OrthoNormNormalize
 }
 
 VECTOR	
-Vector4OrthoNormAngle
+Vector4OrthoNormCos
 (
 	CVECTOR v1,
 	CVECTOR v2
@@ -550,14 +550,14 @@ Vector4OrthoNormAngle
 {
 	VECTOR vDot = Vector4OrthoNormDot(v1, v2);
 	VECTOR vLength1 = Vector4OrthoNormLengthSq(v1);
-	VECTOR vLength2 = Vector4OrthoNormLengthSq(v1);
+	VECTOR vLength2 = Vector4OrthoNormLengthSq(v2);
 	F32 fDot = vDot.vector4_f32[0];
-	F32 fInvLength1 = 1.0f / vLength1.vector4_f32[0];
-	F32 fInvLength2 = 1.0f / vLength2.vector4_f32[0];
-	F32 fMul = fInvLength1 * fInvLength2;
+	F32 fLength1 = vLength1.vector4_f32[0];
+	F32 fLength2 = vLength2.vector4_f32[0];
+	F32 fMul = fLength1 * fLength2;
 	F32 fSqrtMul = ScalarSqrt(fMul);
-	F32 fAngle = fDot * fSqrtMul;
-	VECTOR vResult = VectorFill(fAngle);
+	F32 fCos = fDot / fSqrtMul;
+	VECTOR vResult = VectorFill(fCos);
 	return vResult;
 }
 
