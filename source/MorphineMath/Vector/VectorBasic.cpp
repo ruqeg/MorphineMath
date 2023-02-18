@@ -343,10 +343,10 @@ VECTOR VectorSetIntX
 ) noexcept
 {
 	VECTORU32 vResult = { { {
-			x,
-			V.vector4_u32[1],
-			V.vector4_u32[2],
-			V.vector4_u32[3]
+		x,
+		V.vector4_u32[1],
+		V.vector4_u32[2],
+		V.vector4_u32[3]
 	} } };
 	return vResult.v;
 }
@@ -358,10 +358,10 @@ VECTOR VectorSetIntY
 ) noexcept
 {
 	VECTORU32 vResult = { { {
-			V.vector4_u32[0],
-			y,
-			V.vector4_u32[2],
-			V.vector4_u32[3]
+		V.vector4_u32[0],
+		y,
+		V.vector4_u32[2],
+		V.vector4_u32[3]
 	} } };
 	return vResult.v;
 }
@@ -373,10 +373,10 @@ VECTOR VectorSetIntZ
 ) noexcept
 {
 	VECTORU32 vResult = { { {
-			V.vector4_u32[0],
-			V.vector4_u32[1],
-			z,
-			V.vector4_u32[3]
+		V.vector4_u32[0],
+		V.vector4_u32[1],
+		z,
+		V.vector4_u32[3]
 	} } };
 	return vResult.v;
 }
@@ -388,10 +388,10 @@ VECTOR VectorSetIntW
 ) noexcept
 {
 	VECTORU32 vResult = { { {
-			V.vector4_u32[0],
-			V.vector4_u32[1],
-			V.vector4_u32[2],
-			w
+		V.vector4_u32[0],
+		V.vector4_u32[1],
+		V.vector4_u32[2],
+		w
 	} } };
 	return vResult.v;
 }
