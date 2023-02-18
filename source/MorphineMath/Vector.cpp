@@ -1120,19 +1120,20 @@ Vector3OrthoDot
 	CVECTOR v2
 ) noexcept
 {
-	F32 x;
+	F32 fDot;
 	{
-		x = v1.vector4_f32[0] * v2.vector4_f32[0];
-		x += v1.vector4_f32[1] * v2.vector4_f32[1];
-		x += v1.vector4_f32[2] * v2.vector4_f32[2];
+		fDot = v1.vector4_f32[0] * v2.vector4_f32[0];
+		fDot += v1.vector4_f32[1] * v2.vector4_f32[1];
+		fDot += v1.vector4_f32[2] * v2.vector4_f32[2];
 	}
 
 	VECTORF32 vResult;
-	vResult.f[0]
-		= vResult.f[1]
-		= vResult.f[2]
-		= vResult.f[3]
-		= x;
+	{
+		vResult.f[0] = fDot;
+		vResult.f[1] = fDot;
+		vResult.f[2] = fDot;
+		vResult.f[3] = fDot;
+	}
 	return vResult;
 }
 
@@ -1144,19 +1145,20 @@ Vector3OrthoTripleProduct
 	CVECTOR v3
 ) noexcept
 {
-	F32 x;
+	F32 fTripleProduct;
 	{
-		x = v1.vector4_f32[0] * (v2.vector4_f32[1] * v3.vector4_f32[2] - v2.vector4_f32[2] * v3.vector4_f32[1]);
-		x -= v1.vector4_f32[1] * (v2.vector4_f32[0] * v3.vector4_f32[2] - v2.vector4_f32[2] * v3.vector4_f32[0]);
-		x += v1.vector4_f32[2] * (v2.vector4_f32[0] * v3.vector4_f32[1] - v2.vector4_f32[1] * v3.vector4_f32[0]);
+		fTripleProduct = v1.vector4_f32[0] * (v2.vector4_f32[1] * v3.vector4_f32[2] - v2.vector4_f32[2] * v3.vector4_f32[1]);
+		fTripleProduct -= v1.vector4_f32[1] * (v2.vector4_f32[0] * v3.vector4_f32[2] - v2.vector4_f32[2] * v3.vector4_f32[0]);
+		fTripleProduct += v1.vector4_f32[2] * (v2.vector4_f32[0] * v3.vector4_f32[1] - v2.vector4_f32[1] * v3.vector4_f32[0]);
 	}
 
 	VECTORF32 vResult;
-	vResult.f[0]
-		= vResult.f[1]
-		= vResult.f[2]
-		= vResult.f[3]
-		= x;
+	{
+		vResult.f[0] = fTripleProduct;
+		vResult.f[1] = fTripleProduct;
+		vResult.f[2] = fTripleProduct;
+		vResult.f[3] = fTripleProduct;
+	}
 	return vResult;
 }
 
@@ -1178,6 +1180,53 @@ Vector3OrthoLengthSq
 ) noexcept
 {
 	VECTOR vResult = Vector3OrthoDot(v, v);
+	return vResult;
+}
+
+VECTOR
+Vector3Cross
+(
+	CVECTOR v1,
+	CVECTOR v2
+) noexcept
+{
+	VECTORF32 vResult;
+	{
+		vResult.f[0] = v1.vector4_f32[1] * v2.vector4_f32[2] - v1.vector4_f32[2] * v2.vector4_f32[1];
+		vResult.f[1] = v1.vector4_f32[2] * v2.vector4_f32[0] - v1.vector4_f32[0] * v2.vector4_f32[2];
+		vResult.f[2] = v1.vector4_f32[0] * v2.vector4_f32[1] - v1.vector4_f32[1] * v2.vector4_f32[0];
+		vResult.f[3] = 0.0f;
+	}
+	return vResult;
+}
+
+VECTOR
+Vector3OrthoNormalize
+(
+	CVECTOR v
+) noexcept
+{
+	VECTOR vLength = Vector3OrthoLength(v);
+	F32 fLength = vLength.vector4_f32[0];
+	F32 fInvLength;
+	{
+		if (fLength > 0)
+		{
+			fInvLength = 1.0f / fLength;
+		}
+		else
+		{
+			fInvLength = CMAXF32;
+		}
+	}
+
+	VECTOR vResult;
+	{
+		vResult.vector4_f32[0] = v.vector4_f32[0] * fInvLength;
+		vResult.vector4_f32[1] = v.vector4_f32[1] * fInvLength;
+		vResult.vector4_f32[2] = v.vector4_f32[2] * fInvLength;
+		vResult.vector4_f32[3] = v.vector4_f32[3];
+	}
 	return vResult;
 }
 

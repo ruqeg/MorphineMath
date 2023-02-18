@@ -2,6 +2,7 @@
 #define MORPHINE_MATH_VECTOR_HPP
 
 #include "Scalar.hpp"
+#include "Constants.hpp"
 
 namespace MorphineMath
 {
@@ -42,19 +43,6 @@ namespace MorphineMath
 
 		operator VECTOR() const noexcept;
 	};
-
-	/****************************************************************************
-	 *
-	 * Constants
-	 *
-	 ****************************************************************************/
-	constexpr F32	C2PI = 6.2831853f;
-	constexpr F32	CPI = 3.1415927f;
-	constexpr F32	CPI2 = 1.5707964f;
-	constexpr F32	CPI4 = 0.7853982f;
-	constexpr F32	C1DIVPI = 0.31830987f;
-	constexpr F32	C1DIV2PI = 0.15915494f;
-	constexpr F32	C2DIVPI = 0.63661976f;
 
 	/**************************************************************************
 	*
@@ -180,9 +168,8 @@ namespace MorphineMath
 		VECTOR	Vector3OrthoLength(CVECTOR v) noexcept;
 		VECTOR	Vector3OrthoLengthSq(CVECTOR v) noexcept;
 		//TODO VECTOR	Vector3OrthoClampLength(CVECTOR v, CVECTOR min, CVECTOR max) noexcept;
-		//TODO VECTOR	Vector3Cross(CVECTOR v) noexcept;
-		//TODO VECTOR	Vector3Normalize(CVECTOR v) noexcept;
-		//TODO VECTOR	Vector3Reflect(CVECTOR incident, CVECTOR normal) noexcept;
+		VECTOR	Vector3Cross(CVECTOR v1, CVECTOR v2) noexcept;
+		VECTOR	Vector3OrthoNormalize(CVECTOR v) noexcept;
 		//TODO VECTOR	Vector3DBiorthogonalBasis(CVECTOR v, CVECTOR e) noexcept;
 		//TODO VECTOR	Vector3Project(CVECTOR v1, CVECTOR v2) noexcept;
 		//TODO VECTOR	Vector3Reject(CVECTOR v1, CVECTOR v2) noexcept;

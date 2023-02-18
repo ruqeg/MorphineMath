@@ -379,4 +379,46 @@ TEST_CASE("MorphineMath::Vector")
             CHECK_VECTOR_EQUAL_VECTOR(vTriplePorduct, MorphineMath::Vector3OrthoTripleProduct(vRandom1, vRandom2, vRandom3));
         }
     }
+    SUBCASE("MorphineMath::Vector3Cross")
+    {
+        for (size_t i = 0; i < count; ++i)
+        {
+            const MorphineMath::VECTOR vRandom1 = randomVector(min, max);
+            const MorphineMath::VECTOR vRandom2 = randomVector(min, max);
+            MorphineMath::VECTOR vCross;
+            {
+                vCross.vector4_f32[0] = VectorGetY(vRandom1) * VectorGetZ(vRandom2) - VectorGetZ(vRandom1) * VectorGetY(vRandom2);
+                vCross.vector4_f32[1] = -(VectorGetX(vRandom1) * VectorGetZ(vRandom2) - VectorGetZ(vRandom1) * VectorGetX(vRandom2));
+                vCross.vector4_f32[2] = VectorGetX(vRandom1) * VectorGetY(vRandom2) - VectorGetY(vRandom1) * VectorGetX(vRandom2);
+                vCross.vector4_f32[3] = 0.0f;
+            }
+            CHECK_VECTOR_EQUAL_VECTOR(vCross, MorphineMath::Vector3Cross(vRandom1, vRandom2));
+        }
+    }
+    SUBCASE("MorphineMath::Vector3OrthoNormalize")
+    {
+        for (size_t i = 0; i < count; ++i)
+        {
+            const MorphineMath::VECTOR vRandom = randomVector(min, max);
+            MorphineMath::VECTOR vRandomNormilize;
+            {
+                MorphineMath::F32 length = VectorGetX(MorphineMath::Vector3OrthoLength(vRandom));
+                MorphineMath::F32 invLength;
+                if (length > 0)
+                {
+                    invLength = 1.0f / length;
+                }
+                else
+                {
+                    invLength = MorphineMath::CMAXF32;
+                }
+                vRandomNormilize.vector4_f32[0] = VectorGetX(vRandom) * invLength;
+                vRandomNormilize.vector4_f32[1] = VectorGetY(vRandom) * invLength;
+                vRandomNormilize.vector4_f32[2] = VectorGetZ(vRandom) * invLength;
+                vRandomNormilize.vector4_f32[3] = VectorGetW(vRandom);
+            }
+            MorphineMath::VECTOR vMorphineRandomNormilize = MorphineMath::Vector3OrthoNormalize(vRandom);
+            CHECK_VECTOR_EQUAL_VECTOR(vRandomNormilize, vMorphineRandomNormilize);
+        }
+    }
 }
