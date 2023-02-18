@@ -99,7 +99,9 @@ Vector1OrthoNormLength
 ) noexcept
 {
 	VECTOR vOrthoDotResult = Vector1OrthoNormDot(v, v);
-	VECTOR vResult = VectorSqrt(vOrthoDotResult);
+	F32 fOrthoDotResult = vOrthoDotResult.vector4_f32[0];
+	F32 fOrthoNormLength = ScalarSqrt(fOrthoDotResult);
+	VECTOR vResult = VectorFill(fOrthoNormLength);
 	return vResult;
 }
 
@@ -206,7 +208,9 @@ Vector2OrthoNormLength
 ) noexcept
 {
 	VECTOR vOrthoDotResult = Vector2OrthoNormDot(v, v);
-	VECTOR vResult = VectorSqrt(vOrthoDotResult);
+	F32 fOrthoDotResult = vOrthoDotResult.vector4_f32[0];
+	F32 fOrthoNormLength = ScalarSqrt(fOrthoDotResult);
+	VECTOR vResult = VectorFill(fOrthoNormLength);
 	return vResult;
 }
 
@@ -316,7 +320,9 @@ Vector3OrthoNormLength
 ) noexcept
 {
 	VECTOR vOrthoDotResult = Vector3OrthoNormDot(v, v);
-	VECTOR vResult = VectorSqrt(vOrthoDotResult);
+	F32 fOrthoDotResult = vOrthoDotResult.vector4_f32[0];
+	F32 fOrthoNormLength = ScalarSqrt(fOrthoDotResult);
+	VECTOR vResult = VectorFill(fOrthoNormLength);
 	return vResult;
 }
 
@@ -429,7 +435,9 @@ Vector4OrthoNormLength
 ) noexcept
 {
 	VECTOR vOrthoDotResult = Vector4OrthoNormDot(v, v);
-	VECTOR vResult = VectorSqrt(vOrthoDotResult);
+	F32 fOrthoDotResult = vOrthoDotResult.vector4_f32[0];
+	F32 fOrthoNormLength = ScalarSqrt(fOrthoDotResult);
+	VECTOR vResult = VectorFill(fOrthoNormLength);
 	return vResult;
 }
 
