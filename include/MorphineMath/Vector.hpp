@@ -1,24 +1,4 @@
-﻿/*
- *	BASIC AXIOMS:
- *	1. a + b = b + a                        a, b - vectors;
- *	2. (a + b) + c = a + (b + c)            a, b, c - vectors;
- *	3. a + 0 = a                            a, 0 - vectors;
- *	4. a + (-1)a = 0                        a, 0 - vectors;
- *	5. (αβ)a = α(βa)                        a - vectors; α, β - scalars;
- *	6. (α + β)a = αa + βa                   a - vectors; α, β - scalars;
- *	7. α(a + b) = αa + αb                   a, b - vectors; α - scalars;
- *	8. 1a = a                               a - vectors;
- *
- *	DECLARATONS:
- *	1. -a = (-1)a                           a - vectors;
- *
- *	VECTOR:
- *	a = (α1)e1 + (α2)e2 + ... + (αn)en      a, en - vectors; αn - scalars; en - basis;
- *	a = (α1, α2, ..., αn)                   a - vectors; αn - scalars;
- *
- */
-
-#ifndef MORPHINE_MATH_VECTOR_HPP
+﻿#ifndef MORPHINE_MATH_VECTOR_HPP
 #define MORPHINE_MATH_VECTOR_HPP
 
 #include "Scalar.hpp"
@@ -194,10 +174,8 @@ namespace MorphineMath
 		VECTOR	Vector1OrthoNormLengthSq(CVECTOR v) noexcept;
 		VECTOR	Vector1OrthoNormNormalize(CVECTOR v) noexcept;
 		VECTOR	Vector1OrthoNormCos(CVECTOR v1, CVECTOR v2) noexcept;
-		//TODO VECTOR	Vector1OrthoClampLength(CVECTOR v, CVECTOR min, CVECTOR max) noexcept;
-		//TODO VECTOR	Vector1Project(CVECTOR v1, CVECTOR v2) noexcept;
-		//TODO VECTOR	Vector1Reject(CVECTOR v1, CVECTOR v2) noexcept;
-		//TODO ...
+		VECTOR	Vector1OrthoNormProject(CVECTOR v1, CVECTOR v2) noexcept;
+		VECTOR	Vector1OrthoNormReject(CVECTOR v1, CVECTOR v2) noexcept;
 
 		/**************************************************************************
 		*
@@ -211,10 +189,8 @@ namespace MorphineMath
 		VECTOR	Vector2OrthoNormLengthSq(CVECTOR v) noexcept;
 		VECTOR	Vector2OrthoNormNormalize(CVECTOR v) noexcept;
 		VECTOR	Vector2OrthoNormCos(CVECTOR v1, CVECTOR v2) noexcept;
-		//TODO VECTOR	Vector2OrthoClampLength(CVECTOR v, CVECTOR min, CVECTOR max) noexcept;
-		//TODO VECTOR	Vector2Project(CVECTOR v1, CVECTOR v2) noexcept;
-		//TODO VECTOR	Vector2Reject(CVECTOR v1, CVECTOR v2) noexcept;
-		//TODO ...
+		VECTOR	Vector2OrthoNormProject(CVECTOR v1, CVECTOR v2) noexcept;
+		VECTOR	Vector2OrthoNormReject(CVECTOR v1, CVECTOR v2) noexcept;
 
 		/**************************************************************************
 		*
@@ -232,10 +208,8 @@ namespace MorphineMath
 		VECTOR	Vector3Cross(CVECTOR v1, CVECTOR v2, CVECTOR e1, CVECTOR e2, CVECTOR e3) noexcept;
 		VECTOR	Vector3OrthoNormTripleProduct(CVECTOR v1, CVECTOR v2, CVECTOR v3) noexcept;
 		VECTOR	Vector3OrthoNormCross(CVECTOR v1, CVECTOR v2) noexcept;
-		//TODO VECTOR	Vector3OrthoClampLength(CVECTOR v, CVECTOR min, CVECTOR max) noexcept;
-		//TODO VECTOR	Vector3Project(CVECTOR v1, CVECTOR v2) noexcept;
-		//TODO VECTOR	Vector3Reject(CVECTOR v1, CVECTOR v2) noexcept;
-		//TODO ...
+		VECTOR	Vector3OrthoNormProject(CVECTOR v1, CVECTOR v2) noexcept;
+		VECTOR	Vector3OrthoNormReject(CVECTOR v1, CVECTOR v2) noexcept;
 
 		/**************************************************************************
 		*
@@ -249,10 +223,10 @@ namespace MorphineMath
 		VECTOR	Vector4OrthoNormLengthSq(CVECTOR v) noexcept;
 		VECTOR	Vector4OrthoNormNormalize(CVECTOR v) noexcept;
 		VECTOR	Vector4OrthoNormCos(CVECTOR v1, CVECTOR v2) noexcept;
-		//TODO VECTOR	Vector4OrthoClampLength(CVECTOR v, CVECTOR min, CVECTOR max) noexcept;
-		//TODO VECTOR	Vector4Project(CVECTOR v1, CVECTOR v2) noexcept;
-		//TODO VECTOR	Vector4Reject(CVECTOR v1, CVECTOR v2) noexcept;
-		//TODO ...
+		VECTOR	Vector4OrthoNormProject(CVECTOR v1, CVECTOR v2) noexcept;
+		VECTOR	Vector4OrthoNormReject(CVECTOR v1, CVECTOR v2) noexcept;
+
+		//TODO project, reject, dot, cross operations to matrix
 }
 
 #endif /*MORPHINE_MATH_VECTOR_HPP*/

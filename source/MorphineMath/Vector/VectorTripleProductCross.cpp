@@ -1,7 +1,7 @@
 ﻿/*
  *	Definition:
  *		triple_product(a, b, c) = (a, b, c) = +-V(a, b, c)                               a, b, c - vectors; V - volume of parallelepiped
- *      cross(a, b) = [a, b] c; c⊥a; c⊥b; |c| = +-S(a, b)                               a, b, c - vectors; S - area of parallelogram;
+ *      cross(a, b) = [a, b] = c; c⊥a; c⊥b; |c| = +-S(a, b)                             a, b, c - vectors; S - area of parallelogram;
  *	Properties:
  *		1. (a, b, c) = (c, a, b) = (b, c, a) = −(b, a, c) = −(c, b, a) = −(a, c, b)      a, b, c - vectors in orthonormal basis;
  *	Assumptions:
