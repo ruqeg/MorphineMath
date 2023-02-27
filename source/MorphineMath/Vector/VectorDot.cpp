@@ -1,6 +1,6 @@
-﻿/***********************
+﻿/******************************************
  * §2. Скалярное произведение (Dot product)
- ***********************
+ ******************************************
  *	Определения:
  *		Определение 1.
  *			Скалярным произведением двух векторов называется число, равное произведению длин этих векторов на косинус угла между ними. 
@@ -107,45 +107,6 @@
  *			Действительно, подставим вместо b его разложение и воспользуемся предложением 2:
  *				(a, b) = (a, β1e1 + β2e2 + β3e3) = β1(a, e1) + β2(a, e2) + β3(a, e3)
  *			Теорема доказана.
- */
-/*
- *	Definition:
- *		dot(v1,v2) = (v1, v2) = |v1| + |v2| * cos(v1, v2)                      v1, v2 - vectors;
- *	Properties:
- *		1. (v1, v2) = (v2, v1)                                                 v1, v2 - vectors;
- *		2. (v, v) = |v|^2                                                      v - vectors;
- *		3. ((v1, v2) = 0) ⇒  (v1 ⊥ v2)                                        v1, v2 - vectors;
- *		4. (∀v1 : (v1, v2) = 0) ⇒ (v2 = 0)                                    v1, v2, 0 - vectors;
- *		5. (ei, ej) = (i == j ? 1 : 0)                                         e - orthogonal basis; 1, 0 - scalars;
- *	Assumptions:
- *		1. v_n = (v, en) / |en|^2                                              v - vectors in orthogonal basis; en - orthogonal basis; v_n - scalars;
- *		2. v_n = (v, en)                                                       v - vectors in orthonormal  basis; en - orthonormal basis; v_n - scalars;
- *		3. (αa + βb, c) = α(a, c) + β(b, c)                                    a, b, c - vectors; α, β - scalars;
- *		4. (a, βb + γc) = β(a, b) + γ(a, c)                                    a, b, c - vectors; β, γ - scalars;
- *	Theorems:
- *		1. 
- *			(a, b) = α1*β1 + α2*β2 + ... + αn*βn                               a, b - vectors; αn, βn - scalars;
- *		2. 
- *			(a, b) = (α1*e1 + α2*e2 + ... + αn*en, b) =                        a, b - vectors; en - basis; αn, βn - scalars;
- *			= α1(e1, b) + α2(e2, b) + ... + αn(en, b) =                        a, b - vectors; en - basis; αn, βn - scalars;
- *			= α1*β1` + α2*β2`+ ... + αnβn` =                                   αn, βn - scalars;
- *	Consequence of theorems:
- *		T1 =>
- *			|a| = sqrt(α1^2 + α2^2 + ... + αn^2)                               a - vectors in orthonormal basis, αn - scalars;
- *		T2 =>
- *			|a| = sqrt(α1*(e1, a) + α2*(e2, a) + ... + αn*(en, a))             a - vectors; en - basis; αn - scalars;
- *		T1 => 
- *			cos(a,b) = (a,b) / (|a||b|)                                        a, b - vectors in orthonormal basis;
- *	Proofs of assumptions:
- *		1. //TODO
- *		1. //TODO
- *		2. //TODO
- *		2. //TODO
- *	Proofs of theorems:
- *		1. //TODO
- *	Proofs of consequence of theorems:
- *		1. //TODO
- *		2. //TODO
  */
 
 #include "../../../include/MorphineMath/Vector.hpp"
