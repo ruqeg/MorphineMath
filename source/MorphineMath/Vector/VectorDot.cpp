@@ -23,6 +23,8 @@
  *			Базис, определяемый равенствами:
  *				(ei, ~ej) = (i ≠ j ? 0 : 1);
  *			называется базисом, биортогональным или взаимным базису e1, e2, e3.
+ *		Опредление 6.
+ *			Число (AB, e)/|e| называется скалярной проекцией вектора AB на ось l, определяемую вектором e, (или на вектор e) и обозначается Пр(l,→AB).
  *	Предложения.
  *		Предложение 1.
  *			Если базисные векторы e1, e2, e3 попарно ортогональны, то компоненты любого вектора a находятся по формулам:
@@ -40,6 +42,10 @@
  *			Векторы #e1, #e2, #e3, определенные равенством:
  *				(ei, ~ej) = (i ≠ j ? 0 : 1);
  *			составляют базис.
+ *		Предложение 4.
+ *			Пусть задан вектор AB и некоторая прямая l. Опустим из точек A и B перпендикуляры на прямую и обозначим их основания A' и B'. 
+ *			Вектор ('A, `B) называется (ортогональной) векторной проекцией вектора AB на прямую l и обозначается Пр(l, AB).
+ *			`A`B = Пр(l, AB) = ((AB, e)/|e|²)e
  *	Теоремы.
  *		Теорема 1.
  *			Если базис ортонормированный, то скалярное произведение векторов a и b выражается через их компоненты (α1, α2, α3) и (β1, β2, β3) по формуле:
@@ -69,6 +75,8 @@
  *			Действительно, (a, b) = (α1e1 + α2e2 + α3e3, b) = α1(e1, b) + α2(e2, b) + α3(e3, b) = α1#β1 + α2#β2 + α3#β3. (10)
  *			На плоскости базис #e1, #e2, биортогональный базису e1, e2, определяется теми же формулами (6), и все сказанное о биортогональном базисе в пространстве с очевидными изменениями переносится на базисы на плоскости. 
  *			Так равенства (8) и (9) должны содержать по два слагаемых, а в формулах (7) остаются только две координаты.
+ *		Следствия определения 6.
+ *			Из определения следует, что Пр(l, AB) = |→AB|cos(ϕ), где ϕ — угол между AB и e. Компоненты вектора в ортонормированном базисе равны его скалярным проекциям на оси координат.
  *		Следствия теоремы 1.
  *			Выражение длины вектора через его компоненты в ортонормированном базисе:
  *				|a| = sqrt(α1² + α2² + α3²)
@@ -102,6 +110,17 @@
  *				x = #ξ1#e1 + #ξ2#e2 + #ξ3#e3
  *			Таким образом, каждый вектор, который раскладывается по #e1, #e2, #e3, (в том числе и нулевой) раскладывается однозначно. 
  *			Это означает, что векторы линейно независимы и, следовательно, составляют базис. 
+ *			Предложение доказано.
+ *		Докадательство предложения 4.
+ *			Пусть e — ненулевой вектор на прямой l. Тогда `A`B = αe при некотором α. Заметим, что AB = `AA + `A`B + `BB, где A`A и `BB ортогональны e. 
+ *			Значит, после скалярного умножения на e мы получим (AB, e) = (`A`B, e) = α(e, e). Находя отсюда α, имеем:
+ *				`A`B = Пр(l, AB) = ((AB, e)/|e|²)e
+ *			Хотя на вид это выражение зависит от e, фактически оно не меняется при замене e любым ненулевым вектором λe, коллинеарным e.
+ *			Проекцию A`B` можно представить в виде:
+ *				`A`B = Пр(l, AB) = ((AB, e)/|e|)(e/|e|)
+ *			и заметить, что (AB, e)/|e| — это компонента `A`B по вектору e0 = e/|e|. Так как |e0| = 1, компонента по абсолютной величине равна длине `A`B. 
+ *			Она положительна, если направление `A`B совпадает с направлением e, и отрицательна в противоположном случае.
+ *			Величина (AB, e)/|e| не меняется при замене e на сонаправленный вектор λe, λ > 0 и меняет знак при замене e на противоположно направленный вектор.
  *			Предложение доказано.
  *		Доказательство теоремы 1.
  *			Действительно, подставим вместо b его разложение и воспользуемся предложением 2:
@@ -633,6 +652,106 @@ Vector4OrthoNormCos
 	F32 fSqrtMul = ScalarSqrt(fMul);
 	F32 fCos = fDot / fSqrtMul;
 	VECTOR vResult = VectorFill(fCos);
+	return vResult;
+}
+
+VECTOR
+Vector1OrthoNormProject
+(
+	CVECTOR v1,
+	CVECTOR v2
+) noexcept
+{
+	F32 x = VectorGetX(Vector1OrthoNormDot(v1, v2));
+	F32 y = VectorGetX(Vector1OrthoNormLengthSq(v2));
+	VECTOR vResult = VectorScale(v2, x / y);
+	return vResult;
+}
+
+VECTOR
+Vector1OrthoNormReject
+(
+	CVECTOR v1,
+	CVECTOR v2
+) noexcept
+{
+	VECTOR vProject = Vector1OrthoNormProject(v1, v2);
+	VECTOR vResult = VectorSubtract(v1, vProject);
+	return vResult;
+}
+
+VECTOR
+Vector2OrthoNormProject
+(
+	CVECTOR v1,
+	CVECTOR v2
+) noexcept
+{
+	F32 x = VectorGetX(Vector2OrthoNormDot(v1, v2));
+	F32 y = VectorGetX(Vector2OrthoNormLengthSq(v2));
+	VECTOR vResult = VectorScale(v2, x / y);
+	return vResult;
+}
+
+VECTOR
+Vector2OrthoNormReject
+(
+	CVECTOR v1,
+	CVECTOR v2
+) noexcept
+{
+	VECTOR vProject = Vector2OrthoNormProject(v1, v2);
+	VECTOR vResult = VectorSubtract(v1, vProject);
+	return vResult;
+}
+
+VECTOR
+Vector3OrthoNormProject
+(
+	CVECTOR v1,
+	CVECTOR v2
+) noexcept
+{
+	F32 x = VectorGetX(Vector3OrthoNormDot(v1, v2));
+	F32 y = VectorGetX(Vector3OrthoNormLengthSq(v2));
+	VECTOR vResult = VectorScale(v2, x / y);
+	return vResult;
+}
+
+VECTOR
+Vector3OrthoNormReject
+(
+	CVECTOR v1,
+	CVECTOR v2
+) noexcept
+{
+	VECTOR vProject = Vector3OrthoNormProject(v1, v2);
+	VECTOR vResult = VectorSubtract(v1, vProject);
+	return vResult;
+}
+
+VECTOR
+Vector4OrthoNormProject
+(
+	CVECTOR v1,
+	CVECTOR v2
+) noexcept
+{
+	F32 x = VectorGetX(Vector4OrthoNormDot(v1, v2));
+	F32 y = VectorGetX(Vector4OrthoNormLengthSq(v2));
+	VECTOR vResult = VectorScale(v2, x / y);
+	return vResult;
+}
+
+VECTOR
+Vector4OrthoNormReject
+(
+	CVECTOR v1,
+	CVECTOR v2
+) noexcept
+{
+	VECTOR vProject = Vector4OrthoNormProject(v1, v2);
+	VECTOR vResult = VectorSubtract(v1, vProject);
 	return vResult;
 }
 
