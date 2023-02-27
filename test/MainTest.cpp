@@ -615,4 +615,41 @@ TEST_CASE("MorphineMath::Vector")
             CHECK_VECTOR_EQUAL_VECTOR(vOrthoNormNormalize, MorphineMath::Vector4OrthoNormNormalize(vRandom));
         }
     }
+    SUBCASE("MorphineMath::VectorOrthoNormTripleProduct")
+    {
+        //Vector3
+        for (size_t i = 0; i < count; ++i)
+        {
+            const MorphineMath::VECTOR vRandom1 = randomVector(min, max);
+            const MorphineMath::VECTOR vRandom2 = randomVector(min, max);
+            const MorphineMath::VECTOR vRandom3 = randomVector(min, max);
+            MorphineMath::VECTOR vOrthoNormTripleProduct;
+            {
+                MorphineMath::F32 x;
+                {
+                    x = VectorGetX(vRandom1) * (VectorGetY(vRandom2) * VectorGetZ(vRandom3) - VectorGetY(vRandom3) * VectorGetZ(vRandom2));
+                    x -= VectorGetY(vRandom1) * (VectorGetX(vRandom2) * VectorGetZ(vRandom3) - VectorGetX(vRandom3) * VectorGetZ(vRandom2));
+                    x += VectorGetZ(vRandom1) * (VectorGetX(vRandom2) * VectorGetY(vRandom3) - VectorGetX(vRandom3) * VectorGetY(vRandom2));
+                }
+
+                vOrthoNormTripleProduct = MorphineMath::VectorFill(x);
+            }
+            CHECK_VECTOR_EQUAL_VECTOR(vOrthoNormTripleProduct, MorphineMath::Vector3OrthoNormTripleProduct(vRandom1, vRandom2, vRandom3));
+        }
+    }
+    SUBCASE("MorphineMath::VectorOrthoNormCross")
+    {
+        //Vector3
+        for (size_t i = 0; i < count; ++i)
+        {
+            const MorphineMath::VECTOR vRandom1 = randomVector(min, max);
+            const MorphineMath::VECTOR vRandom2 = randomVector(min, max);
+            MorphineMath::VECTOR vOrthoNormOrtho = MorphineMath::VectorSet(
+                VectorGetY(vRandom1) * VectorGetZ(vRandom2) - VectorGetY(vRandom2) * VectorGetZ(vRandom1),
+                VectorGetX(vRandom2) * VectorGetZ(vRandom1) - VectorGetX(vRandom1) * VectorGetZ(vRandom2),
+                VectorGetX(vRandom1) * VectorGetY(vRandom2) - VectorGetX(vRandom2) * VectorGetY(vRandom1),
+                0.0f);
+            CHECK_VECTOR_EQUAL_VECTOR(vOrthoNormOrtho, MorphineMath::Vector3OrthoNormCross(vRandom1, vRandom2));
+        }
+    }
 }
